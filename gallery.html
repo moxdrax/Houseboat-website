@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Houseboat Experience Gallery - Galilea Houseboat</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eebd2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#1a1814",
+                        "warm-beige": "#f2eee3",
+                        "soft-cream": "#fdfaf5",
+                        "pale-sand": "#f7f3e9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        .dark .glass-nav {
+            background-color: rgba(26, 24, 20, 0.98);
+        }
+        .owl-theme .owl-dots {
+            margin-top: 32px !important;
+            text-align: center;
+            display: flex !important;
+            justify-content: center;
+            gap: 8px;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        .owl-theme .owl-dots .owl-dot span {
+            width: 6px;
+            height: 6px;
+            margin: 0 !important;
+            background: #d1d5db;
+            display: block;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+        }
+        .owl-theme .owl-dots .owl-dot.active span {
+            background: #eebd2b !important;
+            transform: scale(1.5);
+        }
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        input[name="food-tabs"]:checked + label,
+        input[name="gallery-tabs"]:checked + label {
+            color: #eebd2b;
+        }
+        input[name="food-tabs"]:checked + label::after,
+        input[name="gallery-tabs"]:checked + label::after {
+            width: 100%;
+            left: 0;
+        }
+        .tab-label {
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .tab-label::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: #eebd2b;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .masonry-grid {
+            columns: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid {
+                columns: 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                columns: 3;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-[#181611] dark:text-[#f8f7f6] selection:bg-primary selection:text-white">
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-primary/10">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html"><img src="logo.png" alt="Galilea Houseboat" style="height: 190px;"></a>
+            </div>
+            <div class="hidden lg:flex items-center gap-10">
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">ABOUT US</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">ELITE FLEET</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">SERVICES</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">GASTRONOMY</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="gallery.html">GALLERY</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a class="hidden sm:block bg-primary hover:text-white text-[#181611] px-6 py-2 rounded-full font-bold text-[9px] tracking-[0.2em] transition-all"
+                    href="booking.html">
+                    BOOK NOW
+                </a>
+                <button class="lg:hidden p-2 text-primary focus:outline-none" id="menu-toggle">
+                    <span class="material-symbols-outlined text-3xl">menu_open</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-[100] bg-soft-cream dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
+        id="mobile-menu">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-16">
+                <a href="index.html"><img src="logo.png" alt="Galilea Houseboat" style="height: 190px;"></a>
+                <button class="text-primary" id="menu-close">
+                    <span class="material-symbols-outlined text-4xl">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col gap-8">
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#experience">ABOUT US</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#fleet">ELITE FLEET</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#services">SERVICES</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#culinary">GASTRONOMY</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="gallery.html">GALLERY</a>
+            </div>
+            <div class="mt-auto">
+                <a class="block w-full text-center bg-primary text-[#181611] py-4 rounded-full font-bold text-[10px] tracking-[0.2em]"
+                    href="booking.html">BOOK NOW</a>
+            </div>
+        </div>
+    </div>
+    <header class="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-background-dark">
+        <div class="absolute inset-0">
+            <div class="w-full h-full bg-cover bg-center opacity-60"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ');">
+            </div>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-6">
+                <span
+                    class="text-primary font-bold tracking-[0.5em] text-[10px] md:text-[12px] uppercase mb-4 block">VISUAL
+                    JOURNEY</span>
+                <h1 class="text-white text-5xl md:text-7xl font-extralight mb-4 tracking-tight">Houseboat Experience
+                    Gallery</h1>
+                <p class="text-white/80 font-light text-sm md:text-base max-w-xl mx-auto tracking-wide">Capturing the
+                    soul of the backwaters through every frame.</p>
+            </div>
+        </div>
+    </header>
+    <section class="py-24 bg-background-light dark:bg-background-dark" id="gallery">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="overflow-x-auto hide-scrollbar mb-16 px-2">
+                <div
+                    class="flex justify-start md:justify-center items-center gap-8 md:gap-16 min-w-max mx-auto border-b border-primary/10">
+                    <div class="relative">
+                        <input checked="" class="hidden" id="gallery-all" name="gallery-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="gallery-all">ALL VIEWS</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="gallery-exterior" name="gallery-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="gallery-exterior">EXTERIOR</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="gallery-interiors" name="gallery-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="gallery-interiors">INTERIORS</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="gallery-dining" name="gallery-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="gallery-dining">DINING</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="gallery-sceneries" name="gallery-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="gallery-sceneries">SCENERIES</label>
+                    </div>
+                </div>
+            </div>
+            <div class="masonry-grid" id="gallery-grid">
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="exterior">
+                    <img alt="Exterior View"
+                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="interiors">
+                    <img alt="Luxury Suite"
+                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="sceneries">
+                    <img alt="Sunset View" class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="dining">
+                    <img alt="Breakfast Deck"
+                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="interiors">
+                    <img alt="Premium Bedroom"
+                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrFUp2Xcdx-NWpvdKiTt4dhfQe9gQ2bgaP0ubLdSATqGs_tSDEY8zuitvAjvb6KK0tWvSQ0m06YMDXSn65vVJM4lXYNCUq_d3tkAg-Ga1OVPDJHWzFtUEKg0hHm82YOrgSrUjRqBMz0xDlzn6jYdMB7iyZu2wWy25ray0VaipqiVKAeejkZxLDH1L6v4UEVPNPSjXPYHqXHmfk2LVmnFLnGur4f71SEKz89Vjtc-2CZJdACF5YZYorcksyzaoOiPK5gLAkROBWpw" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="dining">
+                    <img alt="Seafood Thali"
+                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                    data-category="sceneries">
+                    <img alt="Misty Canals"
+                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ" />
+                    <div
+                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-pale-sand dark:bg-[#1a1814]" id="culinary">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">GASTRONOMY</span>
+                <h2 class="text-3xl md:text-4xl font-light text-[#181611] dark:text-white">A Taste of the Sun</h2>
+            </div>
+            <div class="overflow-x-auto hide-scrollbar mb-16 px-2 w-full">
+                <div
+                    class="flex flex-nowrap justify-start md:justify-center items-center gap-8 md:gap-20 min-w-max mx-auto border-b border-primary/10">
+                    <div class="relative">
+                        <input checked="" class="hidden" id="tab-breakfast" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-breakfast">BREAKFAST</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="tab-lunch" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-lunch">LUNCH</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="tab-snacks" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-snacks">SNACKS</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="tab-dinner" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-dinner">DINNER</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content active" id="content-breakfast">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Tropical Sunrise Bowl</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Golden Brioche</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Appam with Stew</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Masala Omelette</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="content-lunch">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Coastal Lobster Roll</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Backwater Pearl Spot</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="content-snacks">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Banana Fritters</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="content-dinner">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 border border-primary/5 shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Candlelit Seafood Thali</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer
+        class="bg-warm-beige dark:bg-background-dark text-[#181611] dark:text-white py-16 border-t border-primary/10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex flex-col leading-none mb-6">
+                        <span class="text-xl font-bold tracking-[0.2em] uppercase">Galilea</span>
+                        <span
+                            class="text-[10px] tracking-[0.4em] text-primary font-medium uppercase mt-1">Houseboat</span>
+                    </div>
+                    <p class="text-neutral-500 dark:text-neutral-400 max-w-sm font-light text-sm leading-relaxed mb-6">
+                        Curating refined moments on the Kerala backwaters. We believe in the luxury of time, the beauty
+                        of silence, and the art of exceptional service.
+                    </p>
+                    <div class="flex gap-6">
+                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
+                                class="material-symbols-outlined text-xl">public</span></a>
+                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
+                                class="material-symbols-outlined text-xl">photo_camera</span></a>
+                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
+                                class="material-symbols-outlined text-xl">videocam</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[9px] tracking-[0.4em] text-primary mb-8">NAVIGATION</h4>
+                    <ul class="space-y-4 text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+                        <li><a class="hover:text-primary transition-colors" href="#experience">THE EXPERIENCE</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#gallery">GALLERY</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#culinary">GASTRONOMY</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#fleet">THE FLEET</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[9px] tracking-[0.4em] text-primary mb-8">CONTACT</h4>
+                    <ul class="space-y-4 text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+                        <li class="flex items-center gap-3"><span
+                                class="material-symbols-outlined text-primary text-lg">call</span> +91 98470 00000</li>
+                        <li class="flex items-center gap-3"><span
+                                class="material-symbols-outlined text-primary text-lg">mail</span>
+                            concierge@galilea.houseboat</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[8px] tracking-[0.4em] text-neutral-400 uppercase font-bold">
+                <p>© 2024 Galilea Houseboat.</p>
+                <div class="flex gap-10">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms of Voyage</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            $(".food-carousel").each(function () {
+                $(this).owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    nav: false,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    smartSpeed: 800,
+                    dotsEach: 1,
+                    responsive: {
+                        0: { items: 1 },
+                        768: { items: 2 },
+                        1024: { items: 4 }
+                    }
+                });
+            });
+            $('input[name="food-tabs"]').change(function () {
+                const tabId = $(this).attr('id').replace('tab-', 'content-');
+                $('.tab-content').removeClass('active');
+                $('#' + tabId).addClass('active');
+                $('#' + tabId + ' .food-carousel').trigger('refresh.owl.carousel');
+            });
+            $('input[name="gallery-tabs"]').change(function () {
+                const category = $(this).attr('id').replace('gallery-', '');
+                if (category === 'all') {
+                    $('.masonry-item').fadeIn(400);
+                } else {
+                    $('.masonry-item').hide();
+                    $('.masonry-item[data-category="' + category + '"]').fadeIn(400);
+                }
+            });
+            $('#menu-toggle').click(function () {
+                $('#mobile-menu').addClass('active');
+                $('body').addClass('overflow-hidden');
+            });
+            $('#menu-close, .mobile-link').click(function () {
+                $('#mobile-menu').removeClass('active');
+                $('body').removeClass('overflow-hidden');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

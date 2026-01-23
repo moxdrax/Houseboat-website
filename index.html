@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Galilea Houseboat - Luxury Backwater Experience</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eebd2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#1a1814",
+                        "warm-beige": "#f2eee3",
+                        "soft-cream": "#fdfaf5",
+                        "pale-sand": "#f7f3e9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        .dark .glass-nav {
+            background-color: rgba(26, 24, 20, 0.98);
+        }
+        .owl-theme .owl-dots {
+            margin-top: 48px !important;
+            text-align: center;
+            display: flex !important;
+            justify-content: center;
+            gap: 8px;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        .owl-theme .owl-dots .owl-dot {
+            outline: none;
+        }
+        .owl-theme .owl-dots .owl-dot span {
+            width: 6px;
+            height: 6px;
+            margin: 0 !important;
+            background: #d1d5db;
+            display: block;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+        }
+        .owl-theme .owl-dots .owl-dot.active span, 
+        .owl-theme .owl-dots .owl-dot:hover span {
+            background: #eebd2b !important;
+            transform: scale(1.5);
+        }
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        input[name="food-tabs"]:checked + label {
+            color: #eebd2b;
+        }
+        input[name="food-tabs"]:checked + label::after {
+            width: 100%;
+            left: 0;
+        }
+        .tab-label {
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .tab-label::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: #eebd2b;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .minimal-border {
+            border: 1px solid rgba(238, 189, 43, 0.15);
+        }
+        .hero-carousel .owl-dots {
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+            margin-top: 0 !important;
+            z-index: 30;
+        }
+        .hero-carousel .owl-dots .owl-dot span {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .hero-carousel .owl-dots .owl-dot.active span {
+            background: #eebd2b !important;
+        }
+        .shadow-none-luxury {
+            box-shadow: none !important;
+        }
+        .services-carousel .owl-dots .owl-dot span,
+        .fleet-carousel .owl-dots .owl-dot span,
+        .food-carousel .owl-dots .owl-dot span,
+        .reviews-carousel .owl-dots .owl-dot span {
+            background: #d1d5db;
+        }.hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-[#181611] dark:text-[#f8f7f6] selection:bg-primary selection:text-white">
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-primary/10">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Galilea Houseboat" style="height: 190px;">
+            </div>
+            <div class="hidden lg:flex items-center gap-10">
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">ABOUT US</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">ELITE FLEET</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">SERVICES</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="">GASTRONOMY</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                    href="gallery.html">GALLERY</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a class="hidden sm:block bg-primary hover:text-white text-[#181611] px-6 py-2 rounded-full font-bold text-[9px] tracking-[0.2em] transition-all"
+                    href="booking.html">
+                    BOOK NOW
+                </a>
+                <button class="lg:hidden p-2 text-primary focus:outline-none" id="menu-toggle">
+                    <span class="material-symbols-outlined text-3xl">menu_open</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-[100] bg-soft-cream dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
+        id="mobile-menu">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-16">
+                <img src="logo.png" alt="Galilea Houseboat" style="height: 190px;">
+                <button class="text-primary" id="menu-close">
+                    <span class="material-symbols-outlined text-4xl">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col gap-8">
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#experience">ABOUT US</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#fleet">ELITE FLEET</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#services">SERVICES</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#culinary">GASTRONOMY</a>
+                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="gallery.html">GALLERY</a>
+            </div>
+            <div class="mt-auto">
+                <a class="block w-full text-center bg-primary text-[#181611] py-4 rounded-full font-bold text-[10px] tracking-[0.2em]"
+                    href="booking.html">BOOK NOW</a>
+            </div>
+        </div>
+    </div>
+    <header class="relative h-screen w-full overflow-hidden">
+        <div class="owl-carousel owl-theme hero-carousel h-full">
+            <div class="item h-screen relative">
+                <div class="absolute inset-0 bg-black/30 z-10"></div>
+                <div class="w-full h-full bg-cover bg-center"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ');">
+                </div>
+            </div>
+            <div class="item h-screen relative">
+                <div class="absolute inset-0 bg-black/30 z-10"></div>
+                <div class="w-full h-full bg-cover bg-center"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA');">
+                </div>
+            </div>
+            <div class="item h-screen relative">
+                <div class="absolute inset-0 bg-black/30 z-10"></div>
+                <div class="w-full h-full bg-cover bg-center"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ');">
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+            <div class="text-center px-6 max-w-5xl pointer-events-auto">
+                <span
+                    class="text-white font-bold tracking-[0.5em] text-[10px] md:text-[12px] uppercase mb-4 block drop-shadow-sm">KERALA
+                    BACKWATERS</span>
+                <h1 class="text-white text-5xl md:text-8xl font-extralight mb-8 tracking-tight drop-shadow-md">
+                    The Golden Voyage
+                </h1>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a class="w-full sm:w-auto bg-primary text-[#181611] px-10 py-4 rounded-full font-bold text-[9px] tracking-[0.25em] transition-all hover:bg-white"
+                        href="#fleet">
+                        EXPLORE THE WATERWAY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="h-24 md:h-32 bg-background-light dark:bg-background-dark"></div>
+    <section class="bg-background-light dark:bg-background-dark overflow-hidden" id="experience">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-20 pb-20">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                <div class="w-full lg:hidden text-center">
+                    <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">A SANCTUARY
+                        ON WATER</span>
+                    <h2 class="text-3xl md:text-5xl font-light text-[#181611] dark:text-white mb-6 italic">Welcome to
+                        Galilea</h2>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="aspect-[4/5] lg:aspect-[3/4] w-full bg-cover bg-center rounded-2xl overflow-hidden"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA');">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="hidden lg:block mb-8">
+                        <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">A
+                            SANCTUARY ON WATER</span>
+                        <h2 class="text-5xl font-light text-[#181611] dark:text-white mb-8 italic">Welcome to Galilea
+                        </h2>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-neutral-600 dark:text-neutral-400 text-lg md:text-xl font-light leading-relaxed">
+                            As the morning mist lifts from the tranquil Alleppey backwaters, a new standard of luxury
+                            emerges. Galilea Houseboat is more than a vessel; it is a floating palace designed for those
+                            who seek the profound beauty of silence and the elegance of Kerala's heritage.
+                        </p>
+                        <p
+                            class="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-light leading-relaxed">
+                            Experience a rhythmic dance with nature as you glide through emerald canals lined with
+                            swaying palms. Every journey is a bespoke masterpiece, curated with artisanal precision to
+                            ensure your time on the water is nothing short of transcendent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-soft-cream dark:bg-[#1f1d18]" id="fleet">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="mb-16 text-center">
+                <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">THE
+                    COLLECTION</span>
+                <h2 class="text-3xl md:text-4xl font-light text-[#181611] dark:text-white">Our Elite Fleet</h2>
+            </div>
+            <div class="owl-carousel owl-theme fleet-carousel">
+                <div class="item px-4 h-full">
+                    <div
+                        class="bg-white dark:bg-neutral-900 overflow-hidden minimal-border group rounded-xl flex flex-col h-full shadow-none-luxury transition-shadow">
+                        <div class="aspect-[16/10] bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ');">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <div class="flex justify-between items-baseline mb-3">
+                                <h3 class="text-xl font-light">Luxury 1 Bedroom</h3>
+                                <span class="text-primary text-[9px] font-bold tracking-widest">FROM $500</span>
+                            </div>
+                            <p class="text-neutral-500 dark:text-neutral-400 font-light mb-6 text-sm line-clamp-2">
+                                Intimate sanctuary perfect for couples, featuring a private glass-enclosed lounge.</p>
+                            <div class="mt-auto">
+                                <a class="text-[9px] font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 inline-block hover:text-primary transition-colors"
+                                    href="#">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item px-4 h-full">
+                    <div
+                        class="bg-white dark:bg-neutral-900 overflow-hidden minimal-border group rounded-xl flex flex-col h-full shadow-none-luxury transition-shadow">
+                        <div class="aspect-[16/10] bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrFUp2Xcdx-NWpvdKiTt4dhfQe9gQ2bgaP0ubLdSATqGs_tSDEY8zuitvAjvb6KK0tWvSQ0m06YMDXSn65vVJM4lXYNCUq_d3tkAg-Ga1OVPDJHWzFtUEKg0hHm82YOrgSrUjRqBMz0xDlzn6jYdMB7iyZu2wWy25ray0VaipqiVKAeejkZxLDH1L6v4UEVPNPSjXPYHqXHmfk2LVmnFLnGur4f71SEKz89Vjtc-2CZJdACF5YZYorcksyzaoOiPK5gLAkROBWpw');">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <div class="flex justify-between items-baseline mb-3">
+                                <h3 class="text-xl font-light">Premium 2 Bedroom</h3>
+                                <span class="text-primary text-[9px] font-bold tracking-widest">FROM $850</span>
+                            </div>
+                            <p class="text-neutral-500 dark:text-neutral-400 font-light mb-6 text-sm line-clamp-2">
+                                Sophisticated living for families or friends, boasting a sprawling upper deck.</p>
+                            <div class="mt-auto">
+                                <a class="text-[9px] font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 inline-block hover:text-primary transition-colors"
+                                    href="#">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item px-4 h-full">
+                    <div
+                        class="bg-white dark:bg-neutral-900 overflow-hidden minimal-border group rounded-xl flex flex-col h-full shadow-none-luxury transition-shadow">
+                        <div class="aspect-[16/10] bg-cover bg-center overflow-hidden"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA');">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <div class="flex justify-between items-baseline mb-3">
+                                <h3 class="text-xl font-light">Royal 3 Bedroom</h3>
+                                <span class="text-primary text-[9px] font-bold tracking-widest">FROM $1400</span>
+                            </div>
+                            <p class="text-neutral-500 dark:text-neutral-400 font-light mb-6 text-sm line-clamp-2">Our
+                                flagship grand vessel featuring master suites with jacuzzis and butler team.</p>
+                            <div class="mt-auto">
+                                <a class="text-[9px] font-bold tracking-[0.2em] uppercase border-b border-primary pb-1 inline-block hover:text-primary transition-colors"
+                                    href="#">VIEW DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-background-light dark:bg-background-dark" id="services">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="mb-16 text-center">
+                <span
+                    class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">EXCLUSIVITY</span>
+                <h2 class="text-3xl md:text-4xl font-light text-[#181611] dark:text-white">Bespoke Services</h2>
+            </div>
+            <div class="owl-carousel owl-theme services-carousel">
+                <div class="item px-4">
+                    <div
+                        class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">restaurant</span>
+                        <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Private Chef</h4>
+                        <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">Traditional
+                            Kerala cuisine prepared live to your taste.</p>
+                    </div>
+                </div>
+                <div class="item px-4">
+                    <div
+                        class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">doorbell</span>
+                        <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Butler Service</h4>
+                        <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">Dedicated
+                            concierge 24/7 during your stay.</p>
+                    </div>
+                </div>
+                <div class="item px-4">
+                    <div
+                        class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">spa</span>
+                        <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Ayurvedic Spa</h4>
+                        <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">In-room
+                            traditional massage treatments.</p>
+                    </div>
+                </div>
+                <div class="item px-4">
+                    <div
+                        class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
+                        <span
+                            class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">kayaking</span>
+                        <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Village Tours</h4>
+                        <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">Authentic
+                            local backwater village excursions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-pale-sand dark:bg-[#1a1814]" id="culinary">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">GASTRONOMY</span>
+                <h2 class="text-3xl md:text-4xl font-light text-[#181611] dark:text-white">A Taste of the Sun</h2>
+            </div>
+            <div class="overflow-x-auto hide-scrollbar mb-16 px-2">
+                <div
+                    class="flex justify-start md:justify-center items-center gap-8 md:gap-19 min-w-max mx-auto border-b border-primary/5">
+                    <div class="relative">
+                        <input checked="" class="hidden" id="tab-breakfast" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-breakfast">BREAKFAST</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="tab-lunch" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-lunch">LUNCH</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="tab-snacks" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-snacks">SNACKS</label>
+                    </div>
+                    <div class="relative">
+                        <input class="hidden" id="tab-dinner" name="food-tabs" type="radio" />
+                        <label
+                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
+                            for="tab-dinner">DINNER</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content active" id="content-breakfast">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Tropical Sunrise Bowl</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Golden Brioche</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Appam with Stew</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Masala Omelette</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="content-lunch">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Coastal Lobster Roll</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzNKudWsORFA0yUYmDbtjcsgVc6U8LBIjUWwv93jmWlZaZhbxMVt1mYvPwjsOpbxmGnNVnMwVqsg8i9DQSm5n8uSB9Ymhd1_lDluVIITJf3MLWUmAlA9iJUgQHGUkP65wQJiUzOnv1ChyZ70mqgIaASJFEYDAHH4kIRdC7CJ3tvZ04uKDlyqSCxuHA3ZFPiAu0eRqQoz7N3HXUkLZWvXp8ByFoLmenB0HhyO-no4o83P6kQ2drwnbQeUJ62seCdt_C42VHAZ_GGA');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Sun-Dried Carpaccio</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Backwater Pearl Spot</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Prawns Roast</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="content-snacks">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Banana Fritters</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Masala Vada</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Local Tea Platter</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Sundal Mix</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="content-dinner">
+                <div class="owl-carousel owl-theme food-carousel">
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Candlelit Seafood Thali</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Grilled King Fish</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzNKudWsORFA0yUYmDbtjcsgVc6U8LBIjUWwv93jmWlZaZhbxMVt1mYvPwjsOpbxmGnNVnMwVqsg8i9DQSm5n8uSB9Ymhd1_lDluVIITJf3MLWUmAlA9iJUgQHGUkP65wQJiUzOnv1ChyZ70mqgIaASJFEYDAHH4kIRdC7CJ3tvZ04uKDlyqSCxuHA3ZFPiAu0eRqQoz7N3HXUkLZWvXp8ByFoLmenB0HhyO-no4o83P6kQ2drwnbQeUJ62seCdt_C42VHAZ_GGA');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Chef's Heritage Curry</h4>
+                        </div>
+                    </div>
+                    <div class="item px-4">
+                        <div
+                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
+                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
+                            </div>
+                            <h4 class="text-center font-medium text-base pb-2">Mutton Roast</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-background-light dark:bg-background-dark/50 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 text-center">
+            <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">GUEST VOICES</span>
+            <h2 class="text-3xl font-light mb-16">Highly Rated by Our Guests</h2>
+            <div class="owl-carousel owl-theme reviews-carousel">
+                <div class="item px-4">
+                    <div
+                        class="p-10 md:p-16 bg-white dark:bg-neutral-900 border border-primary/5 rounded-xl min-h-[300px] flex flex-col justify-center items-center text-center max-w-3xl mx-auto shadow-none-luxury">
+                        <div class="flex justify-center gap-1 mb-6">
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                        </div>
+                        <p
+                            class="text-lg md:text-xl font-light italic text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
+                            "An unparalleled luxury experience. The service was impeccable, and waking up to the sun
+                            over the water was magical."
+                        </p>
+                        <p class="font-bold text-[#181611] dark:text-white tracking-widest text-[10px] uppercase">
+                            Julianne V.</p>
+                    </div>
+                </div>
+                <div class="item px-4">
+                    <div
+                        class="p-10 md:p-16 bg-white dark:bg-neutral-900 border border-primary/5 rounded-xl min-h-[300px] flex flex-col justify-center items-center text-center max-w-3xl mx-auto shadow-none-luxury">
+                        <div class="flex justify-center gap-1 mb-6">
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                            <span class="material-symbols-outlined text-primary fill-[1] text-xl">star</span>
+                        </div>
+                        <p
+                            class="text-lg md:text-xl font-light italic text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
+                            "The gastronomy is on another level. Each meal felt like a celebration of the coast. Can't
+                            wait to return."
+                        </p>
+                        <p class="font-bold text-[#181611] dark:text-white tracking-widest text-[10px] uppercase">Marcus
+                            Thorne</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer
+        class="bg-warm-beige dark:bg-background-dark text-[#181611] dark:text-white py-16 border-t border-primary/10">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <img src="logo.png" alt="Galilea Houseboat" style="height: 190px;" class="mb-6">
+                    <p class="text-neutral-500 dark:text-neutral-400 max-w-sm font-light text-sm leading-relaxed mb-6">
+                        Curating refined moments on the Kerala backwaters. We believe in the luxury of time, the beauty
+                        of silence, and the art of exceptional service.
+                    </p>
+                    <div class="flex gap-6">
+                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
+                                class="material-symbols-outlined text-xl">public</span></a>
+                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
+                                class="material-symbols-outlined text-xl">photo_camera</span></a>
+                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
+                                class="material-symbols-outlined text-xl">videocam</span></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[9px] tracking-[0.4em] text-primary mb-8">THE EXPERIENCE</h4>
+                    <ul class="space-y-4 text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+                        <li><a class="hover:text-primary transition-colors" href="#fleet">THE FLEET</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#culinary">GASTRONOMY</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#services">SERVICES</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#experience">WELLNESS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[9px] tracking-[0.4em] text-primary mb-8">CONTACT</h4>
+                    <ul class="space-y-4 text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+                        <li class="flex items-center gap-3"><span
+                                class="material-symbols-outlined text-primary text-lg">call</span> +91 98470 00000</li>
+                        <li class="flex items-center gap-3"><span
+                                class="material-symbols-outlined text-primary text-lg">mail</span>
+                            concierge@galilea.houseboat</li>
+                        <li class="flex items-center gap-3"><span
+                                class="material-symbols-outlined text-primary text-lg">location_on</span> Punnamada,
+                            Alleppey</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[8px] tracking-[0.4em] text-neutral-400 uppercase font-bold">
+                <p>© 2024 Galilea Houseboat.</p>
+                <div class="flex gap-10">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms of Voyage</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            $(".hero-carousel").owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                items: 1,
+                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
+                touchDrag: false,
+                mouseDrag: false
+            });
+            $(".fleet-carousel").owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                dotsEach: 1,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    1024: { items: 3 }
+                }
+            });
+            $(".services-carousel").owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                dots: true,
+                dotsEach: 1,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                responsive: {
+                    0: { items: 1 },
+                    640: { items: 2 },
+                    1024: { items: 4 }
+                }
+            });
+            $(".food-carousel").each(function () {
+                $(this).owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    nav: false,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 3000,
+                    autoplayHoverPause: true,
+                    smartSpeed: 800,
+                    dotsEach: 1,
+                    responsive: {
+                        0: { items: 1 },
+                        768: { items: 2 },
+                        1024: { items: 4 }
+                    }
+                });
+            });
+            $(".reviews-carousel").owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                dots: true,
+                dotsEach: 1,
+                items: 1,
+                center: true,
+                autoplay: true,
+                autoplayTimeout: 6000
+            });
+            $('input[name="food-tabs"]').change(function () {
+                const tabId = $(this).attr('id').replace('tab-', 'content-');
+                $('.tab-content').removeClass('active');
+                $('#' + tabId).addClass('active');
+                $('#' + tabId + ' .food-carousel').trigger('refresh.owl.carousel');
+            });
+            $('#menu-toggle').click(function () {
+                $('#mobile-menu').addClass('active');
+                $('body').addClass('overflow-hidden');
+            });
+            $('#menu-close, .mobile-link').click(function () {
+                $('#mobile-menu').removeClass('active');
+                $('body').removeClass('overflow-hidden');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
