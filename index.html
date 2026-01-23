@@ -86,6 +86,13 @@
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        input[name="category-tabs"]:checked + label {
+            color: #eebd2b;
+        }
+        input[name="category-tabs"]:checked + label::after {
+            width: 100%;
+            left: 0;
+        }
         input[name="food-tabs"]:checked + label {
             color: #eebd2b;
         }
@@ -139,6 +146,44 @@
         .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
+        }
+        .meal-tab-btn.active {
+            color: #eebd2b;
+        }
+        .meal-tab-btn.active::after {
+            width: 100%;
+            left: 0;
+        }
+        .meal-tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #eebd2b;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .menu-list-item {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .menu-list-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #eebd2b;
+            font-weight: bold;
+        }
+        .type-selector-btn.active {
+            color: #eebd2b;
+            border-bottom: 2px solid #eebd2b;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }.cruise-selector-btn.active {
+            background-color: #eebd2b;
+            color: #181611;
+            border-color: #eebd2b;
         }
     </style>
 </head>
@@ -204,20 +249,17 @@
         <div class="owl-carousel owl-theme hero-carousel h-full">
             <div class="item h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center"
-                    style="background-image: url('boat5.jpeg');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('boat5.jpeg');">
                 </div>
             </div>
             <div class="item h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center"
-                    style="background-image: url('boat2.jpeg');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('boat2.jpeg');">
                 </div>
             </div>
             <div class="item h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center"
-                    style="background-image: url('boat3.jpeg');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('boat3.jpeg');">
                 </div>
             </div>
         </div>
@@ -398,200 +440,109 @@
             </div>
         </div>
     </section>
-    <section class="py-24 bg-pale-sand dark:bg-[#1a1814]" id="culinary">
+<section class="py-24 bg-soft-cream dark:bg-[#1a1814]" id="culinary">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">GASTRONOMY</span>
-                <h2 class="text-3xl md:text-4xl font-light text-[#181611] dark:text-white">A Taste of the Sun</h2>
+                <h2 class="text-3xl md:text-5xl font-light text-[#181611] dark:text-white italic mb-4">A Taste of the
+                    Sun</h2>
+                <div class="flex items-center justify-center gap-2 text-primary">
+                    <span class="material-symbols-outlined text-sm">local_bar</span>
+                    <p class="text-[10px] tracking-[0.3em] font-bold uppercase">Welcome Drink: Fresh Lime Juice / Tender
+                        Coconut</p>
+                </div>
             </div>
-            <div class="overflow-x-auto hide-scrollbar mb-16 px-2">
-                <div
-                    class="flex justify-start md:justify-center items-center gap-8 md:gap-19 min-w-max mx-auto border-b border-primary/5">
-                    <div class="relative">
-                        <input checked="" class="hidden" id="tab-breakfast" name="food-tabs" type="radio" />
-                        <label
-                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
-                            for="tab-breakfast">BREAKFAST</label>
+            <div class="max-w-4xl mx-auto mb-16 space-y-8">
+                <div class="flex justify-center">
+                    <div
+                        class="inline-flex p-1 bg-neutral-100 dark:bg-neutral-800 rounded-full border border-primary/10">
+                        <button
+                            class="cruise-selector-btn active px-8 py-3 rounded-full text-[10px] tracking-[0.2em] font-bold uppercase transition-all"
+                            data-cruise="day">Day Cruise</button>
+                        <button
+                            class="cruise-selector-btn px-8 py-3 rounded-full text-[10px] tracking-[0.2em] font-bold uppercase transition-all"
+                            data-cruise="overnight">Overnight Cruise</button>
                     </div>
-                    <div class="relative">
-                        <input class="hidden" id="tab-lunch" name="food-tabs" type="radio" />
-                        <label
-                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
-                            for="tab-lunch">LUNCH</label>
+                </div>
+                <div class="flex justify-center border-b border-primary/10">
+                    <div class="flex gap-12">
+                        <button
+                            class="type-selector-btn active pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all"
+                            data-type="deluxe">Deluxe Menu</button>
+                        <button
+                            class="type-selector-btn pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all"
+                            data-type="premium">Premium Menu</button>
                     </div>
-                    <div class="relative">
-                        <input class="hidden" id="tab-snacks" name="food-tabs" type="radio" />
-                        <label
-                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
-                            for="tab-snacks">SNACKS</label>
-                    </div>
-                    <div class="relative">
-                        <input class="hidden" id="tab-dinner" name="food-tabs" type="radio" />
-                        <label
-                            class="tab-label block text-[10px] tracking-[0.3em] font-bold cursor-pointer uppercase text-neutral-400 dark:text-neutral-500"
-                            for="tab-dinner">DINNER</label>
+                </div>
+                <div class="w-full overflow-x-auto hide-scrollbar">
+                    <div class="flex justify-center items-center gap-10 md:gap-20 min-w-max mx-auto px-6"
+                        id="meal-tabs-container">
+                        <button
+                            class="meal-tab-btn active relative pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all"
+                            data-meal="lunch">Lunch</button>
+                        <button
+                            class="meal-tab-btn relative pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all"
+                            data-meal="tea">Tea / Snacks</button>
                     </div>
                 </div>
             </div>
-            <div class="tab-content active" id="content-breakfast">
-                <div class="owl-carousel owl-theme food-carousel">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto" id="menu-display-area">
+                <div class="space-y-8">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="h-px flex-grow bg-primary/20"></span>
+                        <h3 class="text-sm font-bold tracking-[0.4em] uppercase text-primary">Vegetarian</h3>
+                        <span class="h-px flex-grow bg-primary/20"></span>
+                    </div>
+                    <ul class="space-y-4 text-neutral-600 dark:text-neutral-400 font-light text-base"
+                        id="veg-menu-list">
+                    </ul>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="h-px flex-grow bg-primary/20"></span>
+                        <h3 class="text-sm font-bold tracking-[0.4em] uppercase text-primary">Non-Vegetarian</h3>
+                        <span class="h-px flex-grow bg-primary/20"></span>
+                    </div>
+                    <ul class="space-y-4 text-neutral-600 dark:text-neutral-400 font-light text-base"
+                        id="nonveg-menu-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-20 max-w-6xl mx-auto">
+                <div class="owl-carousel owl-theme food-carousel" id="food-photo-carousel">
                     <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
+                            <div class="aspect-square bg-cover bg-center rounded-lg"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
                             </div>
-                            <h4 class="text-center font-medium text-base pb-2">Tropical Sunrise Bowl</h4>
                         </div>
                     </div>
                     <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
+                            <div class="aspect-square bg-cover bg-center rounded-lg"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
                             </div>
-                            <h4 class="text-center font-medium text-base pb-2">Golden Brioche</h4>
                         </div>
                     </div>
                     <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
+                            <div class="aspect-square bg-cover bg-center rounded-lg"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
                             </div>
-                            <h4 class="text-center font-medium text-base pb-2">Appam with Stew</h4>
                         </div>
                     </div>
                     <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
+                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
+                            <div class="aspect-square bg-cover bg-center rounded-lg"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
                             </div>
-                            <h4 class="text-center font-medium text-base pb-2">Masala Omelette</h4>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-content" id="content-lunch">
-                <div class="owl-carousel owl-theme food-carousel">
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Coastal Lobster Roll</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzNKudWsORFA0yUYmDbtjcsgVc6U8LBIjUWwv93jmWlZaZhbxMVt1mYvPwjsOpbxmGnNVnMwVqsg8i9DQSm5n8uSB9Ymhd1_lDluVIITJf3MLWUmAlA9iJUgQHGUkP65wQJiUzOnv1ChyZ70mqgIaASJFEYDAHH4kIRdC7CJ3tvZ04uKDlyqSCxuHA3ZFPiAu0eRqQoz7N3HXUkLZWvXp8ByFoLmenB0HhyO-no4o83P6kQ2drwnbQeUJ62seCdt_C42VHAZ_GGA');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Sun-Dried Carpaccio</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Backwater Pearl Spot</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Prawns Roast</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="content-snacks">
-                <div class="owl-carousel owl-theme food-carousel">
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Banana Fritters</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Masala Vada</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Local Tea Platter</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Sundal Mix</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="content-dinner">
-                <div class="owl-carousel owl-theme food-carousel">
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Candlelit Seafood Thali</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Grilled King Fish</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzNKudWsORFA0yUYmDbtjcsgVc6U8LBIjUWwv93jmWlZaZhbxMVt1mYvPwjsOpbxmGnNVnMwVqsg8i9DQSm5n8uSB9Ymhd1_lDluVIITJf3MLWUmAlA9iJUgQHGUkP65wQJiUzOnv1ChyZ70mqgIaASJFEYDAHH4kIRdC7CJ3tvZ04uKDlyqSCxuHA3ZFPiAu0eRqQoz7N3HXUkLZWvXp8ByFoLmenB0HhyO-no4o83P6kQ2drwnbQeUJ62seCdt_C42VHAZ_GGA');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Chef's Heritage Curry</h4>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div
-                            class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border shadow-none-luxury">
-                            <div class="aspect-square bg-cover bg-center rounded-lg mb-4"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
-                            </div>
-                            <h4 class="text-center font-medium text-base pb-2">Mutton Roast</h4>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-16 text-center">
+                <p class="text-[10px] tracking-[0.4em] text-neutral-400 uppercase font-bold" id="cruise-time-display">
+                    Cruise Time: 11.00 am to 5.00 pm</p>
             </div>
         </div>
     </section>
@@ -701,7 +652,7 @@
                 nav: false,
                 dots: true,
                 autoplay: true,
-                autoplayTimeout: 7000,
+                autoplayTimeout: 5000,
                 items: 1,
                 animateOut: 'fadeOut',
                 animateIn: 'fadeIn',
@@ -714,7 +665,7 @@
                 nav: false,
                 dots: true,
                 autoplay: true,
-                autoplayTimeout: 5000,
+                autoplayTimeout: 3000,
                 dotsEach: 1,
                 responsive: {
                     0: { items: 1 },
@@ -729,7 +680,7 @@
                 dots: true,
                 dotsEach: 1,
                 autoplay: true,
-                autoplayTimeout: 4000,
+                autoplayTimeout: 3000,
                 responsive: {
                     0: { items: 1 },
                     640: { items: 2 },
@@ -763,13 +714,18 @@
                 items: 1,
                 center: true,
                 autoplay: true,
-                autoplayTimeout: 6000
+                autoplayTimeout: 4000
             });
             $('input[name="food-tabs"]').change(function () {
                 const tabId = $(this).attr('id').replace('tab-', 'content-');
                 $('.tab-content').removeClass('active');
                 $('#' + tabId).addClass('active');
                 $('#' + tabId + ' .food-carousel').trigger('refresh.owl.carousel');
+            });
+            $('input[name="category-tabs"]').change(function () {
+                // You can add logic here to show different food items based on category
+                // For now, it just provides visual feedback
+                console.log('Category changed to: ' + $(this).attr('id'));
             });
             $('#menu-toggle').click(function () {
                 $('#mobile-menu').addClass('active');
@@ -779,6 +735,128 @@
                 $('#mobile-menu').removeClass('active');
                 $('body').removeClass('overflow-hidden');
             });
+        });
+    </script>
+ <script>
+        $(document).ready(function () {
+            // Core Menu Data
+            const menuData = {
+                day: {
+                    time: "11.00 am to 5.00 pm",
+                    meals: ['lunch', 'tea'],
+                    deluxe: {
+                        lunch: {
+                            veg: ["Rice", "Chappathi", "Paneer Masala", "Cauliflower Fry / Gobi Fry", "Sambar", "Thoran (Carrot, Cabbage, Beans)", "Mezhukkupuratty (Long Beans)", "Banana Kalan", "Pappadam", "Pickle", "Vegetable Salad"],
+                            nonveg: ["Rice", "Fish Fry (Pearl Spot)", "Chicken Roast", "Sambar", "Thoran", "Mezhukkupuratty", "Banana Kalan", "Pappadam", "Pickle", "Vegetable Salad"]
+                        },
+                        tea: {
+                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
+                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
+                        }
+                    },
+                    premium: {
+                        lunch: {
+                            veg: ["Rice", "Chappathi", "Paneer Masala", "Cauliflower Fry", "Sambar", "Thoran", "Mezhukkupuratty", "Banana Kalan", "Pappadam", "Pickle", "Veg Salad", "Payasam (Vermicelli)"],
+                            nonveg: ["Rice", "Chappathi", "Fish Fry (Pearl Spot)", "Chicken Roast", "Sambar", "Thoran", "Mezhukkupuratty", "Banana Kalan", "Pappadam", "Pickle", "Veg Salad", "Payasam (Vermicelli)"]
+                        },
+                        tea: {
+                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
+                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
+                        }
+                    }
+                },
+                overnight: {
+                    time: "12.00 pm to 9.00 am (Next Day)",
+                    meals: ['lunch', 'tea', 'dinner', 'breakfast'],
+                    deluxe: {
+                        lunch: {
+                            veg: ["Rice", "Cauliflower Fry", "Sambar", "Thoran", "Mezhukkupuratty", "Yogurt (Dahi)", "Pappadam", "Pickle", "Veg Salad"],
+                            nonveg: ["Rice", "Fish Fry (Pearl Spot / Seer Fish)", "Sambar", "Thoran", "Mezhukkupuratty", "Yogurt (Dahi)", "Pappadam", "Pickle", "Veg Salad"]
+                        },
+                        tea: {
+                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
+                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
+                        },
+                        dinner: {
+                            veg: ["Chappathi", "Rice", "Paneer Masala", "Dal Curry", "Vendakka Mezhukkupuratty", "Potato Roast", "Pickle"],
+                            nonveg: ["Chappathi", "Rice", "Chicken Roast", "Dal Curry", "Vendakka Mezhukkupuratty", "Potato Roast", "Pickle"]
+                        },
+                        breakfast: {
+                            veg: ["Idli, Sambar & Chutney OR Dosa, Sambar & Chutney"],
+                            nonveg: ["Idli, Sambar & Chutney OR Dosa, Sambar & Chutney", "Eggs to Order"]
+                        }
+                    },
+                    premium: {
+                        lunch: {
+                            veg: ["Premium Steamed Rice", "Paneer Makhani", "Special Thoran", "Sambar", "Pappadam", "Desert of the Day"],
+                            nonveg: ["Premium Steamed Rice", "Karimeen Pollichathu", "Chicken Curry", "Sambar", "Pappadam", "Desert of the Day"]
+                        },
+                        tea: {
+                            veg: ["Artisanal Tea / Coffee", "Kerala Special Snacks Platter"],
+                            nonveg: ["Artisanal Tea / Coffee", "Kerala Special Snacks Platter"]
+                        },
+                        dinner: {
+                            veg: ["Grand Veg Thali", "Phulka", "Jeera Rice", "Paneer Butter Masala", "Local Greens"],
+                            nonveg: ["Seafood Grand Platter", "Appam", "Mutton Stew", "Fish Roast", "Salad"]
+                        },
+                        breakfast: {
+                            veg: ["Appam with Veg Stew", "Fresh Tropical Fruits", "Juice"],
+                            nonveg: ["Appam with Egg Roast", "Fresh Tropical Fruits", "Juice"]
+                        }
+                    }
+                }
+            };
+            let currentCruise = 'day';
+            let currentType = 'deluxe';
+            let currentMeal = 'lunch';
+            function updateMenu() {
+                const data = menuData[currentCruise][currentType][currentMeal];
+                const vegList = $('#veg-menu-list').empty();
+                const nonvegList = $('#nonveg-menu-list').empty();
+                data.veg.forEach(item => vegList.append(`<li class="menu-list-item">${item}</li>`));
+                data.nonveg.forEach(item => nonvegList.append(`<li class="menu-list-item">${item}</li>`));
+                $('#cruise-time-display').text(`Cruise Time: ${menuData[currentCruise].time}`);
+                // Re-init carousel for fresh look
+                $("#food-photo-carousel").trigger('to.owl.carousel', [0]);
+            }
+            function updateMealTabs() {
+                const tabs = menuData[currentCruise].meals;
+                const container = $('#meal-tabs-container').empty();
+                tabs.forEach((meal, index) => {
+                    const label = meal === 'tea' ? 'Tea / Snacks' : meal.charAt(0).toUpperCase() + meal.slice(1);
+                    const btn = $(`<button class="meal-tab-btn relative pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all ${index === 0 ? 'active' : ''}" data-meal="${meal}">${label}</button>`);
+                    container.append(btn);
+                    if (index === 0) currentMeal = meal;
+                });
+                $('.meal-tab-btn').click(function () {
+                    $('.meal-tab-btn').removeClass('active');
+                    $(this).addClass('active');
+                    currentMeal = $(this).data('meal');
+                    updateMenu();
+                });
+            }
+            // Initialization & Event Handlers
+            $(".hero-carousel").owlCarousel({ loop: true, margin: 0, items: 1, autoplay: true, dots: true, animateOut: 'fadeOut' });
+            $(".food-carousel").owlCarousel({ loop: true, margin: 0, dots: true, autoplay: true, responsive: { 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 4 } } });
+            $(".reviews-carousel").owlCarousel({ loop: true, items: 1, autoplay: true, dots: true });
+            $('.cruise-selector-btn').click(function () {
+                $('.cruise-selector-btn').removeClass('active');
+                $(this).addClass('active');
+                currentCruise = $(this).data('cruise');
+                updateMealTabs();
+                updateMenu();
+            });
+            $('.type-selector-btn').click(function () {
+                $('.type-selector-btn').removeClass('active');
+                $(this).addClass('active');
+                currentType = $(this).data('type');
+                updateMenu();
+            });
+            $('#menu-toggle').click(() => $('#mobile-menu').addClass('active'));
+            $('#menu-close').click(() => $('#mobile-menu').removeClass('active'));
+            // Initial Load
+            updateMealTabs();
+            updateMenu();
         });
     </script>
 
