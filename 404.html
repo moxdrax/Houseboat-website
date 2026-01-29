@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>404 - Page Not Found | Galilea Houseboat</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eebd2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#1a1814",
+                        "warm-beige": "#f2eee3",
+                        "soft-cream": "#fdfaf5",
+                        "pale-sand": "#f7f3e9",
+                        "royal-blue": "#1E3A8A",
+                        "brand-blue": "#1E3A8A",
+                        "brand-gold": "#FACC15",
+                        "ivory": "#FCF9F2",
+                        "champagne": "#F5F0E6",
+                        "charcoal": "#374151",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background-color: #1E3A8A;
+        }
+        .dark .glass-nav {
+            background-color: rgba(26, 24, 20, 0.98);
+        }
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+        .swimming-fish-animation {
+            position: absolute;
+            color: #C0C0C0;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 5;
+            animation: swim 15s linear infinite;
+        }
+        @keyframes swim {
+            0% { transform: translateX(-10vw) translateY(20vh) scaleX(1); }
+            50% { transform: translateX(50vw) translateY(25vh) scaleX(1); }
+            51% { transform: translateX(50vw) translateY(25vh) scaleX(-1); }
+            100% { transform: translateX(110vw) translateY(20vh) scaleX(-1); }
+        }
+        .error-bg {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ');
+            background-size: cover;
+            background-position: center;
+        }
+        * {
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-ivory text-charcoal selection:bg-brand-blue selection:text-white flex flex-col min-h-screen">
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-primary/10">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.jpeg" alt="Galilea Houseboat" style="height: 80px;">
+            </div>
+            <div class="hidden lg:flex items-center gap-10">
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="index.html">ABOUT US</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="index.html#fleet">ELITE FLEET</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="index.html#services">SERVICES</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="index.html#culinary">GASTRONOMY</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="gallery.html">GALLERY</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="contact.html">CONTACT</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a class="hidden sm:block bg-primary hover:text-white text-white px-6 py-2 rounded-full font-bold text-[9px] tracking-[0.2em] transition-all"
+                    href="booking.html">
+                    BOOK NOW
+                </a>
+                <button class="lg:hidden p-2 text-primary focus:outline-none" id="menu-toggle">
+                    <span class="material-symbols-outlined text-3xl">menu_open</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="fixed inset-0 z-[100] bg-royal-blue dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
+        id="mobile-menu">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-16">
+                <a href="index.html"><img src="logo.jpeg" alt="Galilea Houseboat" style="height: 90px;"></a>
+                <button class="text-primary" id="menu-close">
+                    <span class="material-symbols-outlined text-4xl">close</span>
+                </button>
+            </div>
+            <div class="flex flex-col gap-8">
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="index.html#experience">ABOUT US</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="index.html#fleet">ELITE FLEET</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="index.html#services">SERVICES</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="index.html#culinary">GASTRONOMY</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="gallery.html">GALLERY</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="contact.html">CONTACT</a>
+            </div>
+            <div class="mt-auto">
+                <a class="block w-full text-center bg-primary text-white py-4 rounded-full font-bold text-[10px] tracking-[0.2em]"
+                    href="booking.html">BOOK NOW</a>
+            </div>
+        </div>
+    </div>
+    <main class="flex-grow relative overflow-hidden flex items-center justify-center pt-16 md:pt-20">
+        <div class="absolute inset-0 error-bg blur-sm scale-110 opacity-40"></div>
+        <div class="absolute inset-0 bg-ivory/60"></div>
+        <span class="material-symbols-outlined swimming-fish-animation text-4xl">phishing</span>
+        <div class="relative z-10 max-w-2xl px-6 text-center">
+            <h1 class="font-serif text-[120px] md:text-[200px] leading-none text-brand-blue opacity-90 select-none">404
+            </h1>
+            <div class="space-y-6 mt-8 md:mt-12">
+                <h2 class="text-3xl md:text-5xl font-light text-brand-blue italic">Lost in the Backwaters?</h2>
+                <p class="text-charcoal/80 text-lg md:text-xl font-light leading-relaxed max-w-lg mx-auto">
+                    It seems you’ve drifted off course. The current has taken you to uncharted waters. Let us guide you
+                    back to the main channel.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
+                    <a class="w-full sm:w-auto bg-brand-gold text-brand-blue px-10 py-4 rounded-full font-bold text-[11px] tracking-[0.25em] uppercase transition-all hover:scale-105 active:scale-95"
+                        href="index.html">
+                        Return to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script>
+        $(document).ready(function () {
+            // Mobile menu toggle
+            $('#menu-toggle').click(function () {
+                $('#mobile-menu').addClass('active');
+                $('body').addClass('overflow-hidden');
+            });
+            $('#menu-close, .mobile-link').click(function () {
+                $('#mobile-menu').removeClass('active');
+                $('body').removeClass('overflow-hidden');
+            });
+
+            // Load footer
+            $('#footer').load('footer.html');
+        });
+    </script>
+
+</body>
+
+</html>

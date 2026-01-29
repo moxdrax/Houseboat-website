@@ -30,6 +30,7 @@
                         "warm-beige": "#f2eee3",
                         "soft-cream": "#fdfaf5",
                         "pale-sand": "#f7f3e9",
+                        "royal-blue": "#1E3A8A",
                     },
                     fontFamily: {
                         "display": ["Plus Jakarta Sans", "sans-serif"]
@@ -47,10 +48,10 @@
     <style type="text/tailwindcss">
         .glass-nav {
             backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: #1E3A8A;
         }
         .dark .glass-nav {
-            background-color: rgba(26, 24, 20, 0.98);
+            background-color: white;
         }
         .owl-theme .owl-dots {
             margin-top: 48px !important;
@@ -75,7 +76,7 @@
         }
         .owl-theme .owl-dots .owl-dot.active span, 
         .owl-theme .owl-dots .owl-dot:hover span {
-            background: #eebd2b !important;
+            background: #1E3A8A !important;
             transform: scale(1.5);
         }
         #mobile-menu {
@@ -87,14 +88,14 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         input[name="category-tabs"]:checked + label {
-            color: #eebd2b;
+            color: #1E3A8A;
         }
         input[name="category-tabs"]:checked + label::after {
             width: 100%;
             left: 0;
         }
         input[name="food-tabs"]:checked + label {
-            color: #eebd2b;
+            color: #1E3A8A;
         }
         input[name="food-tabs"]:checked + label::after {
             width: 100%;
@@ -113,7 +114,7 @@
             left: 50%;
             width: 0;
             height: 1px;
-            background-color: #eebd2b;
+            background-color: #1E3A8A;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .minimal-border {
@@ -130,14 +131,13 @@
             background: rgba(255, 255, 255, 0.4);
         }
         .hero-carousel .owl-dots .owl-dot.active span {
-            background: #eebd2b !important;
+            background: #1E3A8A !important;
         }
         .shadow-none-luxury {
             box-shadow: none !important;
         }
         .services-carousel .owl-dots .owl-dot span,
         .fleet-carousel .owl-dots .owl-dot span,
-        .food-carousel .owl-dots .owl-dot span,
         .reviews-carousel .owl-dots .owl-dot span {
             background: #d1d5db;
         }.hide-scrollbar::-webkit-scrollbar {
@@ -148,11 +148,8 @@
             scrollbar-width: none;
         }
         .meal-tab-btn.active {
-            color: #eebd2b;
-        }
-        .meal-tab-btn.active::after {
-            width: 100%;
-            left: 0;
+            color: #1E3A8A;
+            border-bottom: 2px solid #eebd2b;
         }
         .meal-tab-btn::after {
             content: '';
@@ -161,7 +158,6 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background-color: #eebd2b;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .menu-list-item {
@@ -172,18 +168,18 @@
             content: '•';
             position: absolute;
             left: 0;
-            color: #eebd2b;
+            color: #1E3A8A;
             font-weight: bold;
         }
         .type-selector-btn.active {
-            color: #eebd2b;
+            color: #1E3A8A;
             border-bottom: 2px solid #eebd2b;
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }.cruise-selector-btn.active {
-            background-color: #eebd2b;
-            color: #181611;
-            border-color: #eebd2b;
+            background-color: #1E3A8A;
+            color: white;
+            border-color: #1E3A8A;
         }
     </style>
 </head>
@@ -193,22 +189,24 @@
     <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-primary/10">
         <div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Galilea Houseboat" style="height: 190px;">
+                <a href="index.html"><img src="logo.jpeg" alt="Galilea Houseboat" style="height: 80px;"></a>
             </div>
             <div class="hidden lg:flex items-center gap-10">
-                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                     href="">ABOUT US</a>
-                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                     href="">ELITE FLEET</a>
-                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                     href="">SERVICES</a>
-                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
-                    href="">GASTRONOMY</a>
-                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-neutral-800 dark:text-white"
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="404.html">GASTRONOMY</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                     href="gallery.html">GALLERY</a>
+                <a class="text-[9px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
+                    href="contact.html">CONTACT</a>
             </div>
             <div class="flex items-center gap-4">
-                <a class="hidden sm:block bg-primary hover:text-white text-[#181611] px-6 py-2 rounded-full font-bold text-[9px] tracking-[0.2em] transition-all"
+                <a class="hidden sm:block bg-primary hover:text-white text-white px-6 py-2 rounded-full font-bold text-[9px] tracking-[0.2em] transition-all"
                     href="booking.html">
                     BOOK NOW
                 </a>
@@ -218,29 +216,33 @@
             </div>
         </div>
     </nav>
-    <div class="fixed inset-0 z-[100] bg-soft-cream dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
+    <div class="fixed inset-0 z-[100] bg-royal-blue dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
         id="mobile-menu">
         <div class="flex flex-col h-full p-8">
             <div class="flex justify-between items-center mb-16">
-                <img src="logo.png" alt="Galilea Houseboat" style="height: 190px;">
+                <a href="index.html"><img src="logo.jpeg" alt="Galilea Houseboat" style="height: 90px;"></a>
                 <button class="text-primary" id="menu-close">
                     <span class="material-symbols-outlined text-4xl">close</span>
                 </button>
             </div>
             <div class="flex flex-col gap-8">
-                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
-                    href="#experience">ABOUT US</a>
-                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
-                    href="#fleet">ELITE FLEET</a>
-                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
-                    href="#services">SERVICES</a>
-                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
-                    href="#culinary">GASTRONOMY</a>
-                <a class="text-2xl font-light tracking-widest text-[#181611] dark:text-white hover:text-primary transition-colors mobile-link"
-                    href="gallery.html">GALLERY</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="index.html">Home</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#experience">About</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#fleet">Elite Fleet</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#services">Services</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="#culinary">Gastronomy</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="gallery.html">Gallery</a>
+                <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
+                    href="contact.html">Contact</a>
             </div>
             <div class="mt-auto">
-                <a class="block w-full text-center bg-primary text-[#181611] py-4 rounded-full font-bold text-[10px] tracking-[0.2em]"
+                <a class="block w-full text-center bg-primary text-white py-4 rounded-full font-bold text-[10px] tracking-[0.2em]"
                     href="booking.html">BOOK NOW</a>
             </div>
         </div>
@@ -249,17 +251,17 @@
         <div class="owl-carousel owl-theme hero-carousel h-full">
             <div class="item h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('boat5.jpeg');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('./img/Boat/boat5.jpeg');">
                 </div>
             </div>
             <div class="item h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('boat2.jpeg');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('./img/Boat/boat2.jpeg');">
                 </div>
             </div>
             <div class="item h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('boat3.jpeg');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('./img/Boat/boat3.jpeg');">
                 </div>
             </div>
         </div>
@@ -272,7 +274,7 @@
                     The Golden Voyage
                 </h1>
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <a class="w-full sm:w-auto bg-primary text-[#181611] px-10 py-4 rounded-full font-bold text-[9px] tracking-[0.25em] transition-all hover:bg-white"
+                    <a class="w-full sm:w-auto bg-primary text-royal-blue px-10 py-4 rounded-full font-bold text-[9px] tracking-[0.25em] transition-all hover:bg-white hover:text-primary"
                         href="#fleet">
                         EXPLORE THE WATERWAY
                     </a>
@@ -285,19 +287,20 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-20 pb-20">
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
                 <div class="w-full lg:hidden text-center">
-                    <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">A SANCTUARY
+                    <span class="text-royal-blue font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">A
+                        SANCTUARY
                         ON WATER</span>
                     <h2 class="text-3xl md:text-5xl font-light text-[#181611] dark:text-white mb-6 italic">Welcome to
                         Galilea</h2>
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="aspect-[4/5] lg:aspect-[3/4] w-full bg-cover bg-center rounded-2xl overflow-hidden"
-                        style="background-image: url('boat1.jpeg');">
+                        style="background-image: url('./img/Boat/boat1.jpeg');">
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="hidden lg:block mb-8">
-                        <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">A
+                        <span class="text-royal-blue font-bold tracking-[0.4em] text-[10px] uppercase mb-4 block">A
                             SANCTUARY ON WATER</span>
                         <h2 class="text-5xl font-light text-[#181611] dark:text-white mb-8 italic">Welcome to Galilea
                         </h2>
@@ -402,7 +405,7 @@
                     <div
                         class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
                         <span
-                            class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">restaurant</span>
+                            class="material-symbols-outlined text-royal-blue text-4xl mb-6 font-extralight">restaurant</span>
                         <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Private Chef</h4>
                         <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">Traditional
                             Kerala cuisine prepared live to your taste.</p>
@@ -412,7 +415,7 @@
                     <div
                         class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
                         <span
-                            class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">doorbell</span>
+                            class="material-symbols-outlined text-royal-blue text-4xl mb-6 font-extralight">doorbell</span>
                         <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Butler Service</h4>
                         <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">Dedicated
                             concierge 24/7 during your stay.</p>
@@ -421,7 +424,7 @@
                 <div class="item px-4">
                     <div
                         class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
-                        <span class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">spa</span>
+                        <span class="material-symbols-outlined text-royal-blue text-4xl mb-6 font-extralight">spa</span>
                         <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Ayurvedic Spa</h4>
                         <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">In-room
                             traditional massage treatments.</p>
@@ -431,7 +434,7 @@
                     <div
                         class="text-center p-8 border border-primary/10 rounded-xl transition-all bg-white dark:bg-neutral-900/50 hover:bg-soft-cream dark:hover:bg-neutral-900 min-h-[280px] flex flex-col items-center justify-center">
                         <span
-                            class="material-symbols-outlined text-primary text-4xl mb-6 font-extralight">kayaking</span>
+                            class="material-symbols-outlined text-royal-blue text-4xl mb-6 font-extralight">kayaking</span>
                         <h4 class="text-sm font-bold tracking-[0.1em] mb-3 uppercase">Village Tours</h4>
                         <p class="text-neutral-500 dark:text-neutral-400 font-light text-sm leading-relaxed">Authentic
                             local backwater village excursions.</p>
@@ -440,14 +443,14 @@
             </div>
         </div>
     </section>
-<section class="py-24 bg-soft-cream dark:bg-[#1a1814]" id="culinary">
+    <section class="py-24 bg-soft-cream dark:bg-[#1a1814]" id="culinary">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-primary font-bold tracking-[0.4em] text-[10px] uppercase mb-3 block">GASTRONOMY</span>
                 <h2 class="text-3xl md:text-5xl font-light text-[#181611] dark:text-white italic mb-4">A Taste of the
                     Sun</h2>
-                <div class="flex items-center justify-center gap-2 text-primary">
-                    <span class="material-symbols-outlined text-sm">local_bar</span>
+                <div class="flex items-center justify-center gap-2 text-royal-blue">
+
                     <p class="text-[10px] tracking-[0.3em] font-bold uppercase">Welcome Drink: Fresh Lime Juice / Tender
                         Coconut</p>
                 </div>
@@ -475,7 +478,7 @@
                     </div>
                 </div>
                 <div class="w-full overflow-x-auto hide-scrollbar">
-                    <div class="flex justify-center items-center gap-10 md:gap-20 min-w-max mx-auto px-6"
+                    <div class="flex justify-center items-center gap-3 md:gap-6 min-w-max mx-auto px-6"
                         id="meal-tabs-container">
                         <button
                             class="meal-tab-btn active relative pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all"
@@ -506,38 +509,6 @@
                     <ul class="space-y-4 text-neutral-600 dark:text-neutral-400 font-light text-base"
                         id="nonveg-menu-list">
                     </ul>
-                </div>
-            </div>
-            <div class="mt-20 max-w-6xl mx-auto">
-                <div class="owl-carousel owl-theme food-carousel" id="food-photo-carousel">
-                    <div class="item px-4">
-                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
-                            <div class="aspect-square bg-cover bg-center rounded-lg"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
-                            <div class="aspect-square bg-cover bg-center rounded-lg"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrKy2zyQtqgNGROjcjjHyVDYQjx0vkaiHeQUTgPSWm6RHNpOSq0Q5ZnUsCCCGU8J-IchOnUR5WCl4lNgdPJvuzxMzv3JgyprJQlA4aJk_RtEqT-VKEs2x71nbF3qnUNopM4gFfqDhQVbk4Deux62_h_UlGrJHqUfiF9MGWBWGwNc3tQFIU4fGADCOLN3VAX8vGZ6T5gWtmGj00ha9rMHfbxqhWCLzgMAobu5-b0cp6fhbso3hAgVGypMpctHZsndhx3_UAepyOIA');">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
-                            <div class="aspect-square bg-cover bg-center rounded-lg"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ');">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item px-4">
-                        <div class="bg-white dark:bg-neutral-900 rounded-xl overflow-hidden p-3 minimal-border">
-                            <div class="aspect-square bg-cover bg-center rounded-lg"
-                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ');">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="mt-16 text-center">
@@ -592,58 +563,193 @@
             </div>
         </div>
     </section>
-    <footer
-        class="bg-warm-beige dark:bg-background-dark text-[#181611] dark:text-white py-16 border-t border-primary/10">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <img src="logo.png" alt="Galilea Houseboat" style="height: 190px;" class="mb-6">
-                    <p class="text-neutral-500 dark:text-neutral-400 max-w-sm font-light text-sm leading-relaxed mb-6">
-                        Curating refined moments on the Kerala backwaters. We believe in the luxury of time, the beauty
-                        of silence, and the art of exceptional service.
-                    </p>
-                    <div class="flex gap-6">
-                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
-                                class="material-symbols-outlined text-xl">public</span></a>
-                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
-                                class="material-symbols-outlined text-xl">photo_camera</span></a>
-                        <a class="text-neutral-400 hover:text-primary transition-colors" href="#"><span
-                                class="material-symbols-outlined text-xl">videocam</span></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-[9px] tracking-[0.4em] text-primary mb-8">THE EXPERIENCE</h4>
-                    <ul class="space-y-4 text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
-                        <li><a class="hover:text-primary transition-colors" href="#fleet">THE FLEET</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#culinary">GASTRONOMY</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#services">SERVICES</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#experience">WELLNESS</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-[9px] tracking-[0.4em] text-primary mb-8">CONTACT</h4>
-                    <ul class="space-y-4 text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
-                        <li class="flex items-center gap-3"><span
-                                class="material-symbols-outlined text-primary text-lg">call</span> +91 98470 00000</li>
-                        <li class="flex items-center gap-3"><span
-                                class="material-symbols-outlined text-primary text-lg">mail</span>
-                            concierge@galilea.houseboat</li>
-                        <li class="flex items-center gap-3"><span
-                                class="material-symbols-outlined text-primary text-lg">location_on</span> Punnamada,
-                            Alleppey</li>
-                    </ul>
-                </div>
-            </div>
-            <div
-                class="pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[8px] tracking-[0.4em] text-neutral-400 uppercase font-bold">
-                <p>© 2024 Galilea Houseboat.</p>
-                <div class="flex gap-10">
-                    <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                    <a class="hover:text-primary transition-colors" href="#">Terms of Voyage</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
+    <script>
+        $(document).ready(function () {
+            const menuData = {
+                day: {
+                    time: "11.00 am to 5.00 pm",
+                    meals: ['lunch', 'tea'],
+                    deluxe: {
+                        lunch: {
+                            veg: ["Rice", "Chappathi", "Paneer Masala", "Cauliflower Fry / Gobi Fry", "Sambar", "Thoran (Carrot, Cabbage, Beans)"],
+                            nonveg: ["Rice", "Fish Fry (Pearl Spot)", "Chicken Roast", "Sambar", "Thoran"]
+                        },
+                        tea: {
+                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
+                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
+                        }
+                    },
+                    premium: {
+                        lunch: {
+                            veg: ["Rice", "Chappathi", "Paneer Masala", "Cauliflower Fry", "Sambar", "Thoran"],
+                            nonveg: ["Rice", "Chappathi", "Fish Fry (Pearl Spot)", "Chicken Roast", "Sambar", "Thoran"]
+                        },
+                        tea: {
+                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
+                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
+                        }
+                    }
+                },
+                overnight: {
+                    time: "12.00 pm to 9.00 am (Next Day)",
+                    meals: ['breakfast', 'lunch', 'tea', 'dinner'],
+                    deluxe: {
+                        breakfast: {
+                            veg: ["Idli, Sambar & Chutney", "Dosa, Sambar & Chutney"],
+                            nonveg: ["Idli, Sambar & Chutney", "Eggs to Order"]
+                        },
+                        lunch: {
+                            veg: ["Rice", "Cauliflower Fry", "Sambar", "Thoran", "Mezhukkupuratty"],
+                            nonveg: ["Rice", "Fish Fry (Pearl Spot / Seer Fish)", "Sambar", "Thoran"]
+                        },
+                        tea: {
+                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
+                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
+                        },
+                        dinner: {
+                            veg: ["Chappathi", "Rice", "Paneer Masala", "Dal Curry", "Vendakka Mezhukkupuratty"],
+                            nonveg: ["Chappathi", "Rice", "Chicken Roast", "Dal Curry", "Vendakka Mezhukkupuratty"]
+                        }
+                    },
+                    premium: {
+                        breakfast: {
+                            veg: ["Appam with Veg Stew", "Fresh Tropical Fruits"],
+                            nonveg: ["Appam with Egg Roast", "Fresh Tropical Fruits"]
+                        },
+                        lunch: {
+                            veg: ["Premium Steamed Rice", "Paneer Makhani", "Special Thoran", "Sambar"],
+                            nonveg: ["Premium Steamed Rice", "Karimeen Pollichathu", "Chicken Curry", "Sambar"]
+                        },
+                        tea: {
+                            veg: ["Artisanal Tea / Coffee", "Kerala Special Snacks Platter"],
+                            nonveg: ["Artisanal Tea / Coffee", "Kerala Special Snacks Platter"]
+                        },
+                        dinner: {
+                            veg: ["Grand Veg Thali", "Phulka", "Jeera Rice", "Paneer Butter Masala"],
+                            nonveg: ["Seafood Grand Platter", "Appam", "Mutton Stew", "Fish Roast"]
+                        }
+                    }
+                }
+            };
+            let currentCruise = 'day';
+            let currentType = 'deluxe';
+            let currentMeal = 'lunch';
+            let foodCarousel;
+            function initFoodCarousel() {
+                if (foodCarousel) {
+                    foodCarousel.trigger('destroy.owl.carousel');
+                }
+                foodCarousel = $("#food-photo-carousel").owlCarousel({
+                    loop: false,
+                    margin: 20,
+                    dots: true,
+                    nav: false,
+                    responsive: {
+                        0: { items: 1 },
+                        640: { items: 2 },
+                        1024: { items: 3 },
+                        1280: { items: 4 }
+                    }
+                });
+            }
+            function updateCarouselImages(highlightDish = null) {
+                const container = $("#food-photo-carousel").empty();
+                const currentData = menuData[currentCruise][currentType][currentMeal];
+                // Collect all items from the current menu category
+                const allDishes = [...new Set([...currentData.veg, ...currentData.nonveg])];
+                let displayItems = [];
+                if (highlightDish) {
+                    // Move highlight dish to front
+                    const photo = dishPhotos[highlightDish] || dishPhotos['Default'];
+                    displayItems.push({ name: highlightDish, img: photo });
+                    allDishes.filter(d => d !== highlightDish).forEach(dish => {
+                        const img = dishPhotos[dish] || dishPhotos['Default'];
+                        displayItems.push({ name: dish, img: img });
+                    });
+                } else {
+                    // Just show all dishes in the category
+                    allDishes.forEach(dish => {
+                        const img = dishPhotos[dish] || dishPhotos['Default'];
+                        displayItems.push({ name: dish, img: img });
+                    });
+                }
+                displayItems.forEach(item => {
+                    const html = `
+                        <div class="item">
+                            <div class="dish-card overflow-hidden">
+                                <div class="aspect-square bg-cover bg-center rounded-2xl mb-5" style="background-image: url('${item.img}');"></div>
+                                <p class="text-[10px] tracking-[0.25em] font-bold uppercase text-center text-[#181611] dark:text-white">${item.name}</p>
+                            </div>
+                        </div>
+                    `;
+                    container.append(html);
+                });
+                initFoodCarousel();
+            }
+            function updateMenu() {
+                const data = menuData[currentCruise][currentType][currentMeal];
+                const vegList = $('#veg-menu-list').empty();
+                const nonvegList = $('#nonveg-menu-list').empty();
+                data.veg.forEach(item => {
+                    vegList.append(`<li class="menu-list-item" data-dish="${item}">${item}</li>`);
+                });
+                data.nonveg.forEach(item => {
+                    nonvegList.append(`<li class="menu-list-item" data-dish="${item}">${item}</li>`);
+                });
+                $('#cruise-time-display').text(`Cruise Time: ${menuData[currentCruise].time}`);
+                $('.menu-list-item').off('click').on('click', function () {
+                    $('.menu-list-item').removeClass('active');
+                    $(this).addClass('active');
+                    const dish = $(this).data('dish');
+                    updateCarouselImages(dish);
+                });
+                updateCarouselImages();
+            }
+            function updateMealTabs() {
+                const tabs = menuData[currentCruise].meals;
+                const container = $('#meal-tabs-container').empty();
+                // Fix currentMeal if it's not available in the new cruise selection
+                if (!tabs.includes(currentMeal)) {
+                    currentMeal = tabs[0];
+                }
+                tabs.forEach((meal) => {
+                    const label = meal === 'tea' ? 'Tea / Snacks' : meal.charAt(0).toUpperCase() + meal.slice(1);
+                    const activeClass = meal === currentMeal ? 'active' : '';
+                    const btn = $(`<button class="meal-tab-btn relative pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all ${activeClass}" data-meal="${meal}">${label}</button>`);
+                    container.append(btn);
+                });
+                $('.meal-tab-btn').off('click').on('click', function () {
+                    $('.meal-tab-btn').removeClass('active');
+                    $(this).addClass('active');
+                    currentMeal = $(this).data('meal');
+                    updateMenu();
+                });
+            }
+            // Hero and Review Carousel Initializations
+            $(".hero-carousel").owlCarousel({ loop: true, margin: 0, items: 1, autoplay: true, dots: true, animateOut: 'fadeOut' });
+            $(".reviews-carousel").owlCarousel({ loop: true, items: 1, autoplay: true, dots: true });
+            // UI Filter Handlers
+            $('.cruise-selector-btn').click(function () {
+                $('.cruise-selector-btn').removeClass('active');
+                $(this).addClass('active');
+                currentCruise = $(this).data('cruise');
+                updateMealTabs();
+                updateMenu();
+            });
+            $('.type-selector-btn').click(function () {
+                $('.type-selector-btn').removeClass('active');
+                $(this).addClass('active');
+                currentType = $(this).data('type');
+                updateMenu();
+            });
+            $('#menu-toggle').click(() => $('#mobile-menu').addClass('translate-x-0').removeClass('translate-x-full'));
+            $('#menu-close').click(() => $('#mobile-menu').addClass('translate-x-full').removeClass('translate-x-0'));
+            // Start logic
+            updateMealTabs();
+            updateMenu();
+        });
+    </script>
     <script>
         $(document).ready(function () {
             $(".hero-carousel").owlCarousel({
@@ -687,24 +793,6 @@
                     1024: { items: 4 }
                 }
             });
-            $(".food-carousel").each(function () {
-                $(this).owlCarousel({
-                    loop: true,
-                    margin: 0,
-                    nav: false,
-                    dots: true,
-                    autoplay: true,
-                    autoplayTimeout: 3000,
-                    autoplayHoverPause: true,
-                    smartSpeed: 800,
-                    dotsEach: 1,
-                    responsive: {
-                        0: { items: 1 },
-                        768: { items: 2 },
-                        1024: { items: 4 }
-                    }
-                });
-            });
             $(".reviews-carousel").owlCarousel({
                 loop: true,
                 margin: 0,
@@ -716,17 +804,7 @@
                 autoplay: true,
                 autoplayTimeout: 4000
             });
-            $('input[name="food-tabs"]').change(function () {
-                const tabId = $(this).attr('id').replace('tab-', 'content-');
-                $('.tab-content').removeClass('active');
-                $('#' + tabId).addClass('active');
-                $('#' + tabId + ' .food-carousel').trigger('refresh.owl.carousel');
-            });
-            $('input[name="category-tabs"]').change(function () {
-                // You can add logic here to show different food items based on category
-                // For now, it just provides visual feedback
-                console.log('Category changed to: ' + $(this).attr('id'));
-            });
+
             $('#menu-toggle').click(function () {
                 $('#mobile-menu').addClass('active');
                 $('body').addClass('overflow-hidden');
@@ -735,128 +813,9 @@
                 $('#mobile-menu').removeClass('active');
                 $('body').removeClass('overflow-hidden');
             });
-        });
-    </script>
- <script>
-        $(document).ready(function () {
-            // Core Menu Data
-            const menuData = {
-                day: {
-                    time: "11.00 am to 5.00 pm",
-                    meals: ['lunch', 'tea'],
-                    deluxe: {
-                        lunch: {
-                            veg: ["Rice", "Chappathi", "Paneer Masala", "Cauliflower Fry / Gobi Fry", "Sambar", "Thoran (Carrot, Cabbage, Beans)", "Mezhukkupuratty (Long Beans)", "Banana Kalan", "Pappadam", "Pickle", "Vegetable Salad"],
-                            nonveg: ["Rice", "Fish Fry (Pearl Spot)", "Chicken Roast", "Sambar", "Thoran", "Mezhukkupuratty", "Banana Kalan", "Pappadam", "Pickle", "Vegetable Salad"]
-                        },
-                        tea: {
-                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
-                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
-                        }
-                    },
-                    premium: {
-                        lunch: {
-                            veg: ["Rice", "Chappathi", "Paneer Masala", "Cauliflower Fry", "Sambar", "Thoran", "Mezhukkupuratty", "Banana Kalan", "Pappadam", "Pickle", "Veg Salad", "Payasam (Vermicelli)"],
-                            nonveg: ["Rice", "Chappathi", "Fish Fry (Pearl Spot)", "Chicken Roast", "Sambar", "Thoran", "Mezhukkupuratty", "Banana Kalan", "Pappadam", "Pickle", "Veg Salad", "Payasam (Vermicelli)"]
-                        },
-                        tea: {
-                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
-                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
-                        }
-                    }
-                },
-                overnight: {
-                    time: "12.00 pm to 9.00 am (Next Day)",
-                    meals: ['lunch', 'tea', 'dinner', 'breakfast'],
-                    deluxe: {
-                        lunch: {
-                            veg: ["Rice", "Cauliflower Fry", "Sambar", "Thoran", "Mezhukkupuratty", "Yogurt (Dahi)", "Pappadam", "Pickle", "Veg Salad"],
-                            nonveg: ["Rice", "Fish Fry (Pearl Spot / Seer Fish)", "Sambar", "Thoran", "Mezhukkupuratty", "Yogurt (Dahi)", "Pappadam", "Pickle", "Veg Salad"]
-                        },
-                        tea: {
-                            veg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"],
-                            nonveg: ["Tea / Coffee", "Banana Fritters / Onion Pakoda"]
-                        },
-                        dinner: {
-                            veg: ["Chappathi", "Rice", "Paneer Masala", "Dal Curry", "Vendakka Mezhukkupuratty", "Potato Roast", "Pickle"],
-                            nonveg: ["Chappathi", "Rice", "Chicken Roast", "Dal Curry", "Vendakka Mezhukkupuratty", "Potato Roast", "Pickle"]
-                        },
-                        breakfast: {
-                            veg: ["Idli, Sambar & Chutney OR Dosa, Sambar & Chutney"],
-                            nonveg: ["Idli, Sambar & Chutney OR Dosa, Sambar & Chutney", "Eggs to Order"]
-                        }
-                    },
-                    premium: {
-                        lunch: {
-                            veg: ["Premium Steamed Rice", "Paneer Makhani", "Special Thoran", "Sambar", "Pappadam", "Desert of the Day"],
-                            nonveg: ["Premium Steamed Rice", "Karimeen Pollichathu", "Chicken Curry", "Sambar", "Pappadam", "Desert of the Day"]
-                        },
-                        tea: {
-                            veg: ["Artisanal Tea / Coffee", "Kerala Special Snacks Platter"],
-                            nonveg: ["Artisanal Tea / Coffee", "Kerala Special Snacks Platter"]
-                        },
-                        dinner: {
-                            veg: ["Grand Veg Thali", "Phulka", "Jeera Rice", "Paneer Butter Masala", "Local Greens"],
-                            nonveg: ["Seafood Grand Platter", "Appam", "Mutton Stew", "Fish Roast", "Salad"]
-                        },
-                        breakfast: {
-                            veg: ["Appam with Veg Stew", "Fresh Tropical Fruits", "Juice"],
-                            nonveg: ["Appam with Egg Roast", "Fresh Tropical Fruits", "Juice"]
-                        }
-                    }
-                }
-            };
-            let currentCruise = 'day';
-            let currentType = 'deluxe';
-            let currentMeal = 'lunch';
-            function updateMenu() {
-                const data = menuData[currentCruise][currentType][currentMeal];
-                const vegList = $('#veg-menu-list').empty();
-                const nonvegList = $('#nonveg-menu-list').empty();
-                data.veg.forEach(item => vegList.append(`<li class="menu-list-item">${item}</li>`));
-                data.nonveg.forEach(item => nonvegList.append(`<li class="menu-list-item">${item}</li>`));
-                $('#cruise-time-display').text(`Cruise Time: ${menuData[currentCruise].time}`);
-                // Re-init carousel for fresh look
-                $("#food-photo-carousel").trigger('to.owl.carousel', [0]);
-            }
-            function updateMealTabs() {
-                const tabs = menuData[currentCruise].meals;
-                const container = $('#meal-tabs-container').empty();
-                tabs.forEach((meal, index) => {
-                    const label = meal === 'tea' ? 'Tea / Snacks' : meal.charAt(0).toUpperCase() + meal.slice(1);
-                    const btn = $(`<button class="meal-tab-btn relative pb-4 text-[10px] tracking-[0.3em] font-bold uppercase transition-all ${index === 0 ? 'active' : ''}" data-meal="${meal}">${label}</button>`);
-                    container.append(btn);
-                    if (index === 0) currentMeal = meal;
-                });
-                $('.meal-tab-btn').click(function () {
-                    $('.meal-tab-btn').removeClass('active');
-                    $(this).addClass('active');
-                    currentMeal = $(this).data('meal');
-                    updateMenu();
-                });
-            }
-            // Initialization & Event Handlers
-            $(".hero-carousel").owlCarousel({ loop: true, margin: 0, items: 1, autoplay: true, dots: true, animateOut: 'fadeOut' });
-            $(".food-carousel").owlCarousel({ loop: true, margin: 0, dots: true, autoplay: true, responsive: { 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 4 } } });
-            $(".reviews-carousel").owlCarousel({ loop: true, items: 1, autoplay: true, dots: true });
-            $('.cruise-selector-btn').click(function () {
-                $('.cruise-selector-btn').removeClass('active');
-                $(this).addClass('active');
-                currentCruise = $(this).data('cruise');
-                updateMealTabs();
-                updateMenu();
-            });
-            $('.type-selector-btn').click(function () {
-                $('.type-selector-btn').removeClass('active');
-                $(this).addClass('active');
-                currentType = $(this).data('type');
-                updateMenu();
-            });
-            $('#menu-toggle').click(() => $('#mobile-menu').addClass('active'));
-            $('#menu-close').click(() => $('#mobile-menu').removeClass('active'));
-            // Initial Load
-            updateMealTabs();
-            updateMenu();
+
+            // Load footer
+            $('#footer').load('footer.html');
         });
     </script>
 
