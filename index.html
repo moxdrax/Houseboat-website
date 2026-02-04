@@ -162,17 +162,7 @@
             border: 1px solid rgba(238, 189, 43, 0.15);
         }
         .hero-carousel .owl-dots {
-            position: absolute;
-            bottom: 40px;
-            width: 100%;
-            margin-top: 0 !important;
-            z-index: 30;
-        }
-        .hero-carousel .owl-dots .owl-dot span {
-            background: rgba(255, 255, 255, 0.4);
-        }
-        .hero-carousel .owl-dots .owl-dot.active span {
-            background: #eebd2b !important;
+            display: none !important;
         }
         .shadow-none-luxury {
             box-shadow: none !important;
@@ -378,20 +368,27 @@
             </div>
             <div class="item h-[60vh] md:h-screen relative">
                 <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center" style="background-image: url('./img/Boat/boat8.png');">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: url('./img/Boat/boat4.jpeg');">
                 </div>
             </div>
         </div>
-        <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-            <div class="text-center px-6 max-w-5xl pointer-events-auto">
-                <span
-                    class="text-white font-bold tracking-[0.5em] text-[10px] md:text-[12px] uppercase mb-4 block drop-shadow-sm">KERALA
-                    BACKWATERS</span>
-                <h1 class="text-white text-5xl md:text-8xl font-extralight mb-8 tracking-tight drop-shadow-md">
-                    The Golden Voyage
-                </h1>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <a class="bg-primary text-royal-blue px-10 py-4 rounded-full font-bold text-[9px] tracking-[0.25em] transition-all hover:bg-royal-blue hover:text-primary"
+        <div class="absolute inset-0 z-20 flex flex-col pointer-events-none">
+            <!-- Centered heading/text block -->
+            <div class="flex-1 flex items-center justify-center mt-20">
+                <div class="text-center px-6 max-w-5xl pointer-events-auto">
+                    <span
+                        class="text-white font-bold tracking-[0.5em] text-[10px] md:text-[12px] uppercase mb-4 block drop-shadow-sm">KERALA
+                        BACKWATERS</span>
+                    <h1
+                        class="text-white text-5xl md:text-8xl font-extralight mb-6 tracking-tight drop-shadow-md">
+                        The Golden Voyage
+                    </h1>
+                </div>
+            </div>
+            <!-- Text link (styled), placed near bottom -->
+            <div class="pb-10 md:pb-16 flex justify-center">
+                <div class="hidden md:flex flex-col sm:flex-row gap-6 justify-center items-center pointer-events-auto">
+                    <a class="nav-link text-[10px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                         href="#fleet">
                         EXPLORE THE WATERWAY
                     </a>
