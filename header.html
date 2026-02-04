@@ -14,7 +14,7 @@
     }
 </style>
 <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-primary/10">
-    <div class="max-w-[1400px] mx-auto px-6 h-28 flex items-center justify-between">
+    <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
         <div class="flex items-center gap-3">
             <a href="index.html"><img src="img/logo.jpeg" alt="Galilea Houseboat" style="height: 110px;"></a>
         </div>
@@ -46,7 +46,7 @@
 <div class="fixed inset-0 z-[100] bg-royal-blue dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
     id="mobile-menu">
     <div class="flex flex-col h-full">
-        <div class="flex justify-between items-center px-8 h-28 border-b-2 border-primary">
+        <div class="flex justify-between items-center px-8 h-24 border-b-2 border-primary">
             <a href="index.html"><img src="img/logo.jpeg" alt="Galilea Houseboat" style="height: 110px;"></a>
             <button class="text-primary" id="menu-close">
                 <span class="material-symbols-outlined text-4xl">close</span>
@@ -76,27 +76,28 @@
 <!-- Mobile Bottom Navigation -->
 <div class="fixed bottom-0 left-0 right-0 bg-royal-blue shadow-lg z-40 lg:hidden border-t-2 border-primary"
     style="padding-bottom: env(safe-area-inset-bottom); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);">
-    <div class="flex items-center justify-around py-3">
-        <a href="tel:+919746814181" class="flex flex-col items-center gap-1 px-2 py-1">
+    <div class="flex items-center py-3">
+        <a href="tel:+919746814181" class="flex flex-col items-center gap-1 flex-1 py-1">
             <span class="material-symbols-outlined text-xl text-primary">call</span>
             <span class="text-[8px] text-primary font-medium">Call</span>
         </a>
-        <a href="sms:+919746814181" class="flex flex-col items-center gap-1 px-2 py-1">
+        <a href="sms:+919746814181" class="flex flex-col items-center gap-1 flex-1 py-1">
             <span class="material-symbols-outlined text-xl text-primary">chat</span>
             <span class="text-[8px] text-primary font-medium">Text</span>
         </a>
-        <a href="booking.html" class="flex flex-col items-center gap-0 px-2 relative -mt-8">
+        <a href="booking.html" class="flex flex-col items-center justify-end gap-0 flex-1 relative"
+            style="margin-top: -2rem;">
             <div
                 class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-xl border-4 border-royal-blue">
                 <span class="material-symbols-outlined text-3xl text-royal-blue font-bold">calendar_month</span>
             </div>
-            <span class="text-[8px] text-primary font-bold mt-1">Book Now</span>
+            <span class="text-[8px] text-primary font-bold mt-1 mb-1">Book Now</span>
         </a>
-        <a href="gallery.html" class="flex flex-col items-center gap-1 px-2 py-1">
+        <a href="gallery.html" class="flex flex-col items-center gap-1 flex-1 py-1">
             <span class="material-symbols-outlined text-xl text-primary">photo_library</span>
             <span class="text-[8px] text-primary font-medium">Gallery</span>
         </a>
-        <a href="contact.html" class="flex flex-col items-center gap-1 px-2 py-1">
+        <a href="contact.html" class="flex flex-col items-center gap-1 flex-1 py-1">
             <span class="material-symbols-outlined text-xl text-primary">contact_page</span>
             <span class="text-[8px] text-primary font-medium">Touch with Us</span>
         </a>
