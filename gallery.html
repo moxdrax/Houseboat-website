@@ -277,9 +277,9 @@
     </header>
     <section class="py-24 bg-background-light dark:bg-background-dark" id="gallery">
         <div class="max-w-[1400px] mx-auto px-6">
-            <div class="overflow-x-auto hide-scrollbar mb-16 px-2">
+            <div class="mb-16 px-2">
                 <div
-                    class="flex justify-start md:justify-center items-center gap-8 md:gap-16 min-w-max mx-auto border-b border-primary/10">
+                    class="flex flex-wrap justify-center items-center gap-4 md:gap-10 mx-auto border-b border-primary/10">
                     <div class="relative">
                         <input checked="" class="hidden" id="gallery-all" name="gallery-tabs" type="radio" />
                         <label
@@ -312,74 +312,67 @@
                     </div>
                 </div>
             </div>
-            <div class="masonry-grid" id="gallery-grid">
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="exterior">
-                    <img alt="Exterior View"
-                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+            <!-- Mobile: Carousel (items injected via JS so slide count always matches images) -->
+            <div class="block md:hidden">
+                <div class="owl-carousel owl-theme gallery-carousel" id="gallery-carousel"></div>
+            </div>
+
+            <!-- Desktop: Masonry grid -->
+            <div class="hidden md:block">
+                <div class="masonry-grid" id="gallery-grid">
+                    <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                        data-category="exterior">
+                        <img alt="Exterior View"
+                            class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA" />
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        </div>
                     </div>
-                </div>
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="interiors">
-                    <img alt="Luxury Suite"
-                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                        data-category="interiors">
+                        <img alt="Luxury Suite"
+                            class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ" />
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        </div>
                     </div>
-                </div>
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="sceneries">
-                    <img alt="Sunset View" class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                        data-category="sceneries">
+                        <img alt="Sunset View"
+                            class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NEM8O-Y-cm2kb2didNBpcipjiNGStB3bNRx85xvusBkkTPkUtJs34NqwA3rxlm2VrIXd_YK3Lmb-i3KC0iJ1Yk1KMiFcU04ZxojbI87vLfUikLlLHJaufU6t_v5Hjuf9At0Ojssd9qcR4K9S4xeu_IrpAsIh2snBqvcPn6ReLVlAIpzmLRUEq90EhbQV6SGNPI83YA_R6xudIumJacw0nhrU1Q6uOPnjACd9B8RjvaqczgM_mipdPZaa2ugmhNa-oNVXNmbcdA" />
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        </div>
                     </div>
-                </div>
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="dining">
-                    <img alt="Breakfast Deck"
-                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                        data-category="dining">
+                        <img alt="Breakfast Deck"
+                            class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSj9YY-WGoNAq5Ll0TYvqo2T0FHHoob1VA-K6ZY8wOQX7Ijsr6p_txpPzkS8vkd5Xw2fxYSnghRI9Hk1h9-3kUu2Z6rF_qmnKxfLuWqnHgRiQVhv9hZmg72MPOC0SHaTXgY7sp7lvpYhlqe08gJSGarAx55zNOWng8hgWD2E1eGIERFq78gAa_JmkDIPLCF-D-w0EKR_tLt2t9myjLtGdYM_crLYDSEtrWWGYTnO0AZ37jKLT0X3sXTHDj2Gc5a1rfxKSNi0dtFQ" />
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        </div>
                     </div>
-                </div>
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="interiors">
-                    <img alt="Premium Bedroom"
-                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrFUp2Xcdx-NWpvdKiTt4dhfQe9gQ2bgaP0ubLdSATqGs_tSDEY8zuitvAjvb6KK0tWvSQ0m06YMDXSn65vVJM4lXYNCUq_d3tkAg-Ga1OVPDJHWzFtUEKg0hHm82YOrgSrUjRqBMz0xDlzn6jYdMB7iyZu2wWy25ray0VaipqiVKAeejkZxLDH1L6v4UEVPNPSjXPYHqXHmfk2LVmnFLnGur4f71SEKz89Vjtc-2CZJdACF5YZYorcksyzaoOiPK5gLAkROBWpw" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                        data-category="interiors">
+                        <img alt="Premium Bedroom"
+                            class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrFUp2Xcdx-NWpvdKiTt4dhfQe9gQ2bgaP0ubLdSATqGs_tSDEY8zuitvAjvb6KK0tWvSQ0m06YMDXSn65vVJM4lXYNCUq_d3tkAg-Ga1OVPDJHWzFtUEKg0hHm82YOrgSrUjRqBMz0xDlzn6jYdMB7iyZu2wWy25ray0VaipqiVKAeejkZxLDH1L6v4UEVPNPSjXPYHqXHmfk2LVmnFLnGur4f71SEKz89Vjtc-2CZJdACF5YZYorcksyzaoOiPK5gLAkROBWpw" />
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        </div>
                     </div>
-                </div>
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="dining">
-                    <img alt="Seafood Thali"
-                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
-                    </div>
-                </div>
-                <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
-                    data-category="sceneries">
-                    <img alt="Misty Canals"
-                        class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFnmSaCUFOf8dkMjH_Natd4gvKNoDzBIY_At72kt41SmsKL7HYRqrpa1rE8zyziGvBp6XtRruYGt7bVKJ76Z0tedbM7CvcYPNy2m-hxrTv53ZVvMiwW0Vlsf_Iu62sXiq8oSlenzDwMEpzlASR1f45Fhhmkkijf_IdGUdT5wCd-YbFBfXWRI9x_7Mh5lcpOYFf7vBdPkWrMnsOuKN7O-o-vjHv336-7YMqw8wRDzibe6hNb-bFo2vG3suiQ5-i9ZgXHPeE8zSFUQ" />
-                    <div
-                        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="material-symbols-outlined text-white text-3xl font-light">fullscreen</span>
+                    <div class="masonry-item group relative overflow-hidden rounded-xl cursor-pointer"
+                        data-category="dining">
+                        <img alt="Seafood Thali"
+                            class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe49WzJ6SCJQnumHfAdUk5pF7FY6X19zq8Tcpkf_b_W4WZix5HpplhtPL_r3Oc0BugNZfRV6jPHTzEYIVu_8_pRVuFLxihjnnkl64f5IxnBjpkYEJMkBP_ef2RUtJSvTZdrl0EjKv_0CF3gy4VePs6oXHfWYpr53GLyTxKHWqT7J_MmnwJNTjXYdDenyHPWMXg1mKyBp6ZjCBHZm4GkGFGCOxen98Iz1l08plpzGJBIOPu9TTf0kCxm_w0ljLDNRLP6b2QDGnUqQ" />
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -388,38 +381,80 @@
     <div id="footer"></div>
     <script>
         $(document).ready(function () {
-            $(".food-carousel").each(function () {
-                $(this).owlCarousel({
-                    loop: true,
-                    margin: 0,
-                    nav: false,
-                    dots: true,
-                    autoplay: true,
-                    autoplayTimeout: 4000,
-                    smartSpeed: 800,
-                    dotsEach: 1,
-                    responsive: {
-                        0: { items: 1 },
-                        768: { items: 2 },
-                        1024: { items: 4 }
-                    }
+            let galleryCarousel = null;
+
+            function buildGalleryCarousel(category) {
+                const $carousel = $('#gallery-carousel');
+
+                // Destroy existing instance if any
+                if (galleryCarousel) {
+                    $carousel.trigger('destroy.owl.carousel');
+                    $carousel.html('');
+                    galleryCarousel = null;
+                }
+
+                // Collect images from desktop grid as source
+                let $sourceItems = $('#gallery-grid .masonry-item');
+                if (category !== 'all') {
+                    $sourceItems = $sourceItems.filter('[data-category="' + category + '"]');
+                }
+
+                $sourceItems.each(function () {
+                    const $item = $(this);
+                    const $img = $item.find('img').first();
+                    const src = $img.attr('src');
+                    const alt = $img.attr('alt') || '';
+                    const cat = $item.data('category');
+
+                    const html = `
+                        <div class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer" data-category="${cat}">
+                            <img alt="${alt}" class="w-full h-auto transition-transform duration-700 group-hover:scale-105" src="${src}" />
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            </div>
+                        </div>
+                    `;
+                    $carousel.append(html);
                 });
-            });
-            $('input[name="food-tabs"]').change(function () {
-                const tabId = $(this).attr('id').replace('tab-', 'content-');
-                $('.tab-content').removeClass('active');
-                $('#' + tabId).addClass('active');
-                $('#' + tabId + ' .food-carousel').trigger('refresh.owl.carousel');
-            });
+
+                // Re-init carousel only if we have slides
+                if ($carousel.children().length) {
+                    galleryCarousel = $carousel.owlCarousel({
+                        loop: true,
+                        margin: 16,
+                        nav: false,
+                        dots: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        smartSpeed: 800,
+                        dotsEach: 1,
+                        responsive: {
+                            0: { items: 1 }
+                        }
+                    });
+                }
+            }
+
+            function filterGalleryGrid(category) {
+                const $items = $('#gallery-grid .masonry-item');
+                if (!$items.length) return;
+                if (category === 'all') {
+                    $items.fadeIn(400);
+                } else {
+                    $items.hide();
+                    $items.filter('[data-category="' + category + '"]').fadeIn(400);
+                }
+            }
+
             $('input[name="gallery-tabs"]').change(function () {
                 const category = $(this).attr('id').replace('gallery-', '');
-                if (category === 'all') {
-                    $('.masonry-item').fadeIn(400);
-                } else {
-                    $('.masonry-item').hide();
-                    $('.masonry-item[data-category="' + category + '"]').fadeIn(400);
-                }
+                buildGalleryCarousel(category);
+                filterGalleryGrid(category);
             });
+
+            // Default to all
+            buildGalleryCarousel('all');
+            filterGalleryGrid('all');
+
             // Load header and footer
             $('#header').load('header.html');
             $('#footer').load('footer.html');
