@@ -9,8 +9,17 @@
     #mobile-menu {
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    #mobile-menu {
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateX(-100%);
+        height: 100%;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+    }
     #mobile-menu.active {
         transform: translateX(0);
+    }
+    .mobile-link-item {
+        @apply flex items-center justify-between p-5 border-b border-gray-200/50 hover:bg-black/5 transition-colors;
     }
     .nav-link {
         @apply relative inline-block pb-2;
@@ -30,10 +39,22 @@
     }
 </style>
 <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-primary/10">
-    <div class="max-w-[1400px] mx-auto px-4 h-20 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <a href="index.html"><img src="img/logo.jpeg" alt="Galilea Houseboat" style="height: 100px;"></a>
+    <div class="max-w-[1400px] mx-auto px-4 h-20 flex items-center justify-between relative">
+        <!-- Mobile: Left Menu Toggle -->
+        <div class="flex items-center lg:hidden">
+            <button class="p-2 text-white focus:outline-none -ml-2" id="menu-toggle">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
         </div>
+
+        <!-- Logo: Centered on Mobile, Left on Desktop -->
+        <div class="absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0 flex items-center">
+            <a href="index.html">
+                <img src="img/logo.jpeg" alt="Galilea Houseboat" class="h-[80px] sm:h-[100px] w-auto">
+            </a>
+        </div>
+
+        <!-- Desktop Navigation: Hidden on Mobile -->
         <div class="hidden lg:flex items-center gap-10">
             <a class="nav-link text-[10px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                 href="index.html">HOME</a>
@@ -48,120 +69,239 @@
             <a class="nav-link text-[10px] font-bold tracking-[0.2em] hover:text-primary transition-colors text-white"
                 href="contact.html">CONTACT</a>
         </div>
-        <div class="flex items-center gap-4">
+
+        <!-- Right Side: Book Now Button -->
+        <div class="flex items-center">
             <a class="hidden sm:block bg-primary text-royal-blue px-6 py-2 rounded-full font-bold text-[9px] tracking-[0.2em] transition-all"
                 href="booking.html">
                 BOOK NOW
             </a>
-            <button class="lg:hidden p-2 text-primary focus:outline-none" id="menu-toggle">
-                <span class="material-symbols-outlined text-3xl">menu_open</span>
-            </button>
         </div>
     </div>
 </nav>
-<div class="fixed inset-0 z-[100] bg-royal-blue dark:bg-background-dark translate-x-full transition-transform duration-500 ease-in-out lg:hidden"
-    id="mobile-menu">
-    <div class="flex flex-col h-full">
-        <div class="flex justify-between items-center px-4 h-20 border-b-2 border-primary">
-            <a href="index.html"><img src="img/logo.jpeg" alt="Galilea Houseboat" style="height: 100px;"></a>
-            <button class="text-primary" id="menu-close">
-                <span class="material-symbols-outlined text-4xl">close</span>
+<div class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm lg:hidden opacity-0 pointer-events-none transition-opacity duration-300"
+    id="mobile-menu-overlay">
+    <!-- Menu Panel -->
+    <div class="fixed top-0 left-0 bottom-0 w-[80%] max-w-[320px] bg-white flex flex-col shadow-2xl" id="mobile-menu">
+
+        <!-- Header -->
+        <div class="bg-background-light p-5 flex items-center justify-center border-b border-gray-200/50 relative">
+            <span class="text-[12px] font-bold text-royal-blue tracking-[0.3em] uppercase">Menu</span>
+            <!-- Close Button integrated into header or separate -->
+            <button class="absolute right-4 text-royal-blue hover:text-gray-600 transition-colors" id="menu-close">
+                <span class="material-symbols-outlined text-2xl">close</span>
             </button>
         </div>
-        <div class="flex flex-col gap-8 p-8">
-            <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
-                href="index.html">Home</a>
-            <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
-                href="about.html">About</a>
-            <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
-                href="fleet.html">Elite Fleet</a>
-            <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
-                href="services.html">Services</a>
-            <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
-                href="gallery.html">Gallery</a>
-            <a class="text-2xl font-light tracking-widest text-white dark:text-white hover:text-primary transition-colors mobile-link"
-                href="contact.html">Contact</a>
-            <!-- <div class="flex justify-center mt-4">
-                <a class="bg-primary text-royal-blue px-8 py-3 rounded-full font-bold text-[11px] tracking-[0.2em] transition-all"
-                    href="booking.html">BOOK NOW</a>
-            </div> -->
+
+        <!-- Navigation Links: List Style -->
+        <div class="flex flex-col bg-transparent overflow-y-auto">
+            <a class="mobile-link-item mobile-link" href="index.html">
+                <span class="font-bold text-royal-blue tracking-wider">HOME</span>
+                <span class="material-symbols-outlined text-gray-300 text-sm">chevron_right</span>
+            </a>
+            <a class="mobile-link-item mobile-link" href="about.html">
+                <span class="font-bold text-royal-blue tracking-wider">ABOUT</span>
+                <span class="material-symbols-outlined text-gray-300 text-sm">chevron_right</span>
+            </a>
+            <a class="mobile-link-item mobile-link" href="fleet.html">
+                <span class="font-bold text-royal-blue tracking-wider">ELITE FLEET</span>
+                <span class="material-symbols-outlined text-gray-300 text-sm">chevron_right</span>
+            </a>
+            <a class="mobile-link-item mobile-link" href="services.html">
+                <span class="font-bold text-royal-blue tracking-wider">SERVICES</span>
+                <span class="material-symbols-outlined text-gray-300 text-sm">chevron_right</span>
+            </a>
+            <a class="mobile-link-item mobile-link" href="gallery.html">
+                <span class="font-bold text-royal-blue tracking-wider">GALLERY</span>
+                <span class="material-symbols-outlined text-gray-300 text-sm">chevron_right</span>
+            </a>
+            <a class="mobile-link-item mobile-link" href="contact.html">
+                <span class="font-bold text-royal-blue tracking-wider">CONTACT</span>
+                <span class="material-symbols-outlined text-gray-300 text-sm">chevron_right</span>
+            </a>
+            <a class="mobile-link-item mobile-link bg-primary/5 border-b-primary/20" href="booking.html">
+                <span class="font-bold text-royal-blue tracking-wider">BOOK NOW</span>
+                <span class="material-symbols-outlined text-primary text-sm">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Logout / Bottom Area -->
+        <div class="mt-auto p-5 border-t border-gray-200/50">
+            <a class="flex items-center gap-3 text-red-400 hover:text-red-500 transition-colors mobile-link"
+                href="index.html">
+                <span class="material-symbols-outlined text-xl">logout</span>
+                <span class="font-bold text-xs tracking-widest uppercase">Logout</span>
+            </a>
         </div>
     </div>
 </div>
 
-<!-- Mobile Bottom Navigation -->
+<!-- Mobile Bottom Navigation Design -->
 <style>
-    @keyframes jump-bounce {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        10% {
-            transform: translateY(-8px);
-        }
-
-        20% {
-            transform: translateY(0);
-        }
-
-        30% {
-            transform: translateY(-4px);
-        }
-
-        40% {
-            transform: translateY(0);
-        }
+    .mobile-bottom-nav {
+        background-color: white;
+        border-radius: 24px;
+        margin: 0 16px 24px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .book-now-jump {
-        animation: jump-bounce 3s ease-in-out infinite;
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        flex: 1;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-item .material-symbols-outlined {
+        font-size: 22px;
+        color: #94a3b8;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-nav-item span:not(.material-symbols-outlined) {
+        font-size: 10px;
+        font-weight: 600;
+        color: #94a3b8;
+        letter-spacing: 0.05em;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-nav-item.active .material-symbols-outlined,
+    .mobile-nav-item.active span:not(.material-symbols-outlined) {
+        color: #1E3A8A;
+        /* Primary Gold */
+    }
+
+    /* Circle Button Specifics */
+    .circle-container {
+        position: absolute;
+        top: -32px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 72px;
+        height: 72px;
+        background-color: #f8f7f6;
+        /* Matches background-light */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .circle-button {
+        width: 56px;
+        height: 56px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(92, 101, 232, 0.4);
+        transition: transform 0.3s ease;
+    }
+
+    .circle-button:active {
+        transform: scale(0.9);
+    }
+
+    .circle-button .material-symbols-outlined {
+        color: #1E3A8A;
+        /* Royal Blue for contrast */
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .circle-label {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        font-weight: 700;
+        color: #1E3A8A;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        pointer-events: none;
+    }
+
+    /* Safe Area for modern phones */
+    .safe-area-pt {
+        padding-bottom: env(safe-area-inset-bottom);
     }
 </style>
 
-<div class="fixed bottom-0 left-0 right-0 bg-royal-blue shadow-lg z-40 lg:hidden border-t-2 border-primary"
-    style="padding-bottom: env(safe-area-inset-bottom); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);">
-    <div class="flex items-center py-3">
-        <a href="tel:+919746814181" class="flex flex-col items-center gap-1 flex-1 py-1">
-            <span class="material-symbols-outlined text-xl text-primary">call</span>
-            <span class="text-[10px] text-primary font-medium">Call</span>
+<div class="fixed bottom-0 left-0 right-0 z-[60] lg:hidden safe-area-pt">
+    <div class="mobile-bottom-nav">
+        <!-- Home -->
+        <a href="index.html" class="mobile-nav-item" id="nav-home">
+            <span class="material-symbols-outlined">home</span>
+            <span>HOME</span>
         </a>
-        <a href="https://wa.me/919746814181" target="_blank"
-            class="flex flex-col items-center gap-1 flex-1 py-1 text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-            </svg>
-            <span class="text-[10px] text-primary font-medium">Text</span>
+
+        <!-- Fleet -->
+        <a href="fleet.html" class="mobile-nav-item" id="nav-fleet">
+            <span class="material-symbols-outlined">directions_boat</span>
+            <span>FLEET</span>
         </a>
-        <a href="booking.html" class="flex flex-col items-center justify-end gap-0 flex-1 relative"
-            style="margin-top: -2rem;">
-            <div
-                class="book-now-jump w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-xl border-4 border-royal-blue">
-                <span class="material-symbols-outlined text-3xl text-royal-blue font-bold">calendar_month</span>
-            </div>
-            <span class="text-[10px] text-primary font-bold mt-1 mb-1">Book Now</span>
+
+        <!-- Spacing for Diamond -->
+        <div class="w-16"></div>
+
+        <!-- Central Circle Button -->
+        <div class="circle-container">
+            <a href="booking.html" class="circle-button">
+                <span class="material-symbols-outlined">calendar_month</span>
+            </a>
+        </div>
+        <div class="circle-label">BOOK</div>
+
+        <!-- Services -->
+        <a href="services.html" class="mobile-nav-item" id="nav-services">
+            <span class="material-symbols-outlined">concierge</span>
+            <span>SERVICES</span>
         </a>
-        <a href="gallery.html" class="flex flex-col items-center gap-1 flex-1 py-1">
-            <span class="material-symbols-outlined text-xl text-primary">photo_library</span>
-            <span class="text-[10px] text-primary font-medium">Gallery</span>
-        </a>
-        <a href="contact.html" class="flex flex-col items-center gap-1 flex-1 py-1">
-            <span class="material-symbols-outlined text-xl text-primary">contact_page</span>
-            <span class="text-[10px] text-primary font-medium">Get in Touch</span>
+
+        <!-- Contact -->
+        <a href="contact.html" class="mobile-nav-item" id="nav-contact">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span>CONTACT</span>
         </a>
     </div>
 </div>
 
 <script>
+    // Highlight active nav item based on URL
+    $(document).ready(function () {
+        const path = window.location.pathname.split("/").pop() || 'index.html';
+        $('.mobile-nav-item').removeClass('active');
+
+        if (path === 'index.html') $('#nav-home').addClass('active');
+        else if (path === 'fleet.html') $('#nav-fleet').addClass('active');
+        else if (path === 'services.html') $('#nav-services').addClass('active');
+        else if (path === 'contact.html') $('#nav-contact').addClass('active');
+    });
+</script>
+
+
+<script>
     // Mobile menu toggle functionality
     $(document).ready(function () {
         $('#menu-toggle').click(function () {
+            $('#mobile-menu-overlay').css({ 'opacity': '1', 'pointer-events': 'auto' });
             $('#mobile-menu').addClass('active');
             $('body').addClass('overflow-hidden');
         });
-        $('#menu-close, .mobile-link').click(function () {
+        $('#menu-close, .mobile-link, #mobile-menu-overlay').click(function (e) {
+            if (e.target !== this && this.id === 'mobile-menu-overlay') return;
+            $('#mobile-menu-overlay').css({ 'opacity': '0', 'pointer-events': 'none' });
             $('#mobile-menu').removeClass('active');
             $('body').removeClass('overflow-hidden');
         });
