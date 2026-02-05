@@ -205,10 +205,17 @@
         transform: translateX(-50%);
         font-size: 10px;
         font-weight: 700;
-        color: #1E3A8A;
+        color: #9CA3AF;
+        /* Gray by default */
         text-transform: uppercase;
         letter-spacing: 0.1em;
         pointer-events: none;
+        transition: color 0.3s ease;
+    }
+
+    .circle-label.active {
+        color: #1E3A8A;
+        /* Royal Blue when active */
     }
 
     /* Safe Area for modern phones */
@@ -225,10 +232,10 @@
             <span>HOME</span>
         </a>
 
-        <!-- Fleet -->
-        <a href="fleet.html" class="mobile-nav-item" id="nav-fleet">
-            <span class="material-symbols-outlined">directions_boat</span>
-            <span>FLEET</span>
+        <!-- About -->
+        <a href="about.html" class="mobile-nav-item" id="nav-about">
+            <span class="material-symbols-outlined">info</span>
+            <span>ABOUT</span>
         </a>
 
         <!-- Spacing for Diamond -->
@@ -236,16 +243,16 @@
 
         <!-- Central Circle Button -->
         <div class="circle-container">
-            <a href="booking.html" class="circle-button">
+            <a href="booking.html" class="circle-button" id="nav-booking">
                 <span class="material-symbols-outlined">calendar_month</span>
             </a>
         </div>
-        <div class="circle-label">BOOK</div>
+        <div class="circle-label" id="book-label">BOOK NOW</div>
 
-        <!-- Services -->
-        <a href="services.html" class="mobile-nav-item" id="nav-services">
-            <span class="material-symbols-outlined">concierge</span>
-            <span>SERVICES</span>
+        <!-- Gallery -->
+        <a href="gallery.html" class="mobile-nav-item" id="nav-gallery">
+            <span class="material-symbols-outlined">photo_library</span>
+            <span>GALLERY</span>
         </a>
 
         <!-- Contact -->
@@ -261,10 +268,15 @@
     $(document).ready(function () {
         const path = window.location.pathname.split("/").pop() || 'index.html';
         $('.mobile-nav-item').removeClass('active');
+        $('#book-label').removeClass('active');
 
         if (path === 'index.html') $('#nav-home').addClass('active');
-        else if (path === 'fleet.html') $('#nav-fleet').addClass('active');
-        else if (path === 'services.html') $('#nav-services').addClass('active');
+        else if (path === 'about.html') $('#nav-about').addClass('active');
+        else if (path === 'gallery.html') $('#nav-gallery').addClass('active');
+        else if (path === 'booking.html') {
+            $('#nav-booking').addClass('active');
+            $('#book-label').addClass('active');
+        }
         else if (path === 'contact.html') $('#nav-contact').addClass('active');
     });
 </script>
