@@ -909,7 +909,7 @@
         </div>
     </section>
     <!-- Google Reviews Section -->
-    <section class="py-10 bg-soft-cream dark:bg-background-dark" id="reviews">
+    <section class="py-6 bg-soft-cream dark:bg-background-dark" id="reviews">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="text-center mb-10">
                 <span
@@ -960,29 +960,6 @@
                         </p>
                         <p class="font-bold text-[#181611] dark:text-white tracking-widest text-[11px] uppercase">
                             Gunjan Jain</p>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="item px-4">
-                    <div
-                        class="p-12 md:p-16 bg-white dark:bg-neutral-900 border border-primary/5 rounded-2xl min-h-[320px] flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
-                        <div class="flex justify-center gap-1 mb-8">
-                            <span class="material-symbols-outlined text-primary fill-[1]">star</span>
-                            <span class="material-symbols-outlined text-primary fill-[1]">star</span>
-                            <span class="material-symbols-outlined text-primary fill-[1]">star</span>
-                            <span class="material-symbols-outlined text-primary fill-[1]">star</span>
-                            <span class="material-symbols-outlined text-primary fill-[1]">star</span>
-                        </div>
-                        <p
-                            class="text-xl md:text-2xl font-light italic text-neutral-600 dark:text-neutral-300 mb-10 leading-relaxed max-w-3xl">
-                            "Our first experience with Galilea houseboat in Alleppey was very much memorable. All
-                            members & owner very helpful. Veg & Non veg food quality was best, Karimeen fish fry
-                            deliciousness. cleaness of boat house. We enjoyed alot with it. I will always recommend the
-                            Galilea house boat."
-                        </p>
-                        <p class="font-bold text-[#181611] dark:text-white tracking-widest text-[11px] uppercase">
-                            Kiran Kumbhar</p>
                     </div>
                 </div>
 
@@ -1328,7 +1305,8 @@
                     1024: { items: 4 }
                 }
             });
-            $(".reviews-carousel").owlCarousel({
+            // Reviews Carousel with Dynamic Timing
+            var reviewsCarousel = $(".reviews-carousel").owlCarousel({
                 loop: true,
                 margin: 0,
                 nav: false,
@@ -1337,7 +1315,24 @@
                 items: 1,
                 center: true,
                 autoplay: true,
-                autoplayTimeout: 4000
+                autoplayTimeout: 4000, // Default fallback
+                smartSpeed: 800
+            });
+
+            // Dynamic timing based on review text length
+            reviewsCarousel.on('changed.owl.carousel', function (event) {
+                var currentItem = event.item.index;
+                var $currentSlide = $(event.target).find('.owl-item').eq(currentItem);
+                var reviewText = $currentSlide.find('p').first().text();
+                var textLength = reviewText.length;
+
+                // Calculate timeout: ~50ms per character, minimum 3s, maximum 8s
+                var timeout = Math.min(Math.max(textLength * 50, 3000), 8000);
+
+                // Update autoplay timeout for next transition
+                reviewsCarousel.trigger('stop.owl.autoplay');
+                reviewsCarousel.data('owl.carousel').settings.autoplayTimeout = timeout;
+                reviewsCarousel.trigger('play.owl.autoplay');
             });
             $(".destinations-carousel").owlCarousel({
                 loop: true,
